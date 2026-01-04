@@ -10,6 +10,6 @@ config_version=5
 
 [application]
 
-config/name="Attentionality"
+config/name="MultiTaskKing"
 run/main_scene="uid://oii8v8d24o72"
 config/features=PackedStringArray("4.5", "Forward Plus")
