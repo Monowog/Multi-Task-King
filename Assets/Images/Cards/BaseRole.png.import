@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlynvmwsn2ymv"
-path="res://.godot/imported/BaseRole.png-a4e6a4b14473091e451fe043babcdedb.ctex"
+path="res://.godot/imported/BaseRole.png-001c0664a07a5f923e8b0589a6c0e19e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/BaseRole.png"
-dest_files=["res://.godot/imported/BaseRole.png-a4e6a4b14473091e451fe043babcdedb.ctex"]
+source_file="res://Assets/Images/Cards/BaseRole.png"
+dest_files=["res://.godot/imported/BaseRole.png-001c0664a07a5f923e8b0589a6c0e19e.ctex"]
 
 [params]
 

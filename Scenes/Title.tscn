@@ -1,11 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://oii8v8d24o72"]
+[gd_scene format=3 uid="uid://dtojdotmm2l52"]
 
-[ext_resource type="PackedScene" uid="uid://dtatkfsedgd3x" path="res://Cards/ActCard.tscn" id="1_tochr"]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(577, 322)
-
-[node name="ActCard" parent="." instance=ExtResource("1_tochr")]
-position = Vector2(389, 220)
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
