@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://doh0i42utrtt4"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://action_resource.gd" id="1_ly8h8"]
+
+[resource]
+script = ExtResource("1_ly8h8")
+name = "Read a Book"
+duration = 6
+dopamine = 3
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

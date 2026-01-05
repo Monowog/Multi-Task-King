@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://byhw1dubkd1hf"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://action_resource.gd" id="1_ca3sd"]
+
+[resource]
+script = ExtResource("1_ca3sd")
+name = "Scroll Shorts"
+duration = 2
+dopamine = 1
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

@@ -6,4 +6,5 @@
 script = ExtResource("1_ergkn")
 name = "Check Socials"
 duration = 1
+dopamine = 1
 metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

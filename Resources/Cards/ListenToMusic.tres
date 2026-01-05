@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://lw558bvr1ph8"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://action_resource.gd" id="1_jiiod"]
+
+[resource]
+script = ExtResource("1_jiiod")
+name = "Listen to Music"
+duration = 3
+dopamine = 2
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"
