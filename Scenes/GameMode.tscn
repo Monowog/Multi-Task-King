@@ -1,15 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0lw2ssw0i0fn"]
+[gd_scene load_steps=2 format=3 uid="uid://dtojdotmm2l52"]
 
-[ext_resource type="Script" uid="uid://ckr5m5j60nnti" path="res://Scripts/option_menu.gd" id="1_5d174"]
+[ext_resource type="Script" uid="uid://cfna438uphhr6" path="res://Scripts/game_mode.gd" id="1_0wnff"]
 
-[node name="OptionMenu" type="Control"]
+[node name="GameMode" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5d174")
+script = ExtResource("1_0wnff")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -33,5 +33,4 @@ layout_mode = 2
 text = "Back to Main
 "
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMain" to="." method="_on_quit_game_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMain" to="." method="_on_back_to_main_pressed"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfrtpbt5sjw6l"]
+
+[ext_resource type="Script" uid="uid://b1oa1cgop30bl" path="res://Scripts/game_data.gd" id="1_smftj"]
+
+[node name="GlobalData" type="Node"]
+script = ExtResource("1_smftj")
+num_players = 4
+num_rounds = 10
+board_size = Vector2(1000, 600)
+player_names = Array[String](["Player1", "Player2", "Player3", "Player4"])

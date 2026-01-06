@@ -1,10 +1,10 @@
 extends Control
 
 func _on_new_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Board.tscn")
+	SceneManager.change_scene_to("res://Scenes/GameMode.tscn")
 
 func _on_options_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/OptionMenu.tscn")
+	SceneManager.change_scene_to("res://Scenes/OptionMenu.tscn")
 
 func _on_quit_game_pressed() -> void:
 	get_tree().quit()

@@ -14,7 +14,12 @@ config/name="MultiTaskKing"
 run/main_scene="uid://6vggpgfvf72y"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[autoload]
+
+SceneManager="*res://Scenes/scene_manager.tscn"
+GlobalData="*res://Scenes/global_data.tscn"
+
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1600
+window/size/viewport_height=900

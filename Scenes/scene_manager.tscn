@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3t8xhlbfyh22"]
+
+[ext_resource type="Script" uid="uid://0d3omoimb7fk" path="res://Scripts/scene_transition.gd" id="1_30st1"]
+
+[node name="SceneManager" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
+script = ExtResource("1_30st1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
