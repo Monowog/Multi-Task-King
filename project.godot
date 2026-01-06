@@ -23,3 +23,7 @@ GlobalData="*res://Scenes/global_data.tscn"
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
+
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false

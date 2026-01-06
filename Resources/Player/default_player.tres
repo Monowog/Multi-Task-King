@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="player_resource" load_steps=2 format=3 uid="uid://d3v41o4kikqvn"]
+
+[ext_resource type="Script" uid="uid://dasqiwatss4ih" path="res://player_resource.gd" id="1_qebsl"]
+
+[resource]
+script = ExtResource("1_qebsl")
+name = "New Player"
+attention = 5
+maxAttention = 10
+color = Color(0.15776387, 0.39144188, 1, 1)
+metadata/_custom_type_script = "uid://dasqiwatss4ih"
