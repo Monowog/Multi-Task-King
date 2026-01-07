@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3v1hrakawu75"]
+[gd_scene load_steps=7 format=3 uid="uid://b3v1hrakawu75"]
 
 [ext_resource type="Script" uid="uid://ci7qmb70v24bk" path="res://Scripts/playspace.gd" id="1_cmxdg"]
 [ext_resource type="PackedScene" uid="uid://tp4l8rmpkd4v" path="res://Scenes/Player.tscn" id="2_mu1oq"]
 [ext_resource type="Script" uid="uid://c8lcd2d7to0k7" path="res://Scripts/help_panel.gd" id="3_iykop"]
 [ext_resource type="Texture2D" uid="uid://dgnbjpvo18o51" path="res://Assets/Images/UI/01.png" id="3_pp1cu"]
+[ext_resource type="PackedScene" uid="uid://cr1se7c4nni2f" path="res://Scenes/ActionCard.tscn" id="5_ic3gb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iykop"]
+bg_color = Color(0.2051174, 0.20511746, 0.20511732, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Playspace" type="Control"]
 layout_mode = 3
@@ -14,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cmxdg")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="PlayspaceMargin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,13 +38,13 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Buttons" type="HBoxContainer" parent="MarginContainer"]
+[node name="Buttons" type="HBoxContainer" parent="PlayspaceMargin"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="Turn" type="RichTextLabel" parent="MarginContainer/Buttons"]
+[node name="Turn" type="RichTextLabel" parent="PlayspaceMargin/Buttons"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -42,48 +54,78 @@ text = "Turn X/Y"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackButton" type="Button" parent="MarginContainer/Buttons"]
+[node name="BackButton" type="Button" parent="PlayspaceMargin/Buttons"]
 layout_mode = 2
 text = "Back to Main Menu"
 
-[node name="How to Play" type="Button" parent="MarginContainer/Buttons"]
+[node name="How to Play" type="Button" parent="PlayspaceMargin/Buttons"]
 layout_mode = 2
 text = "How to Play"
 
-[node name="Players" type="VBoxContainer" parent="MarginContainer"]
+[node name="Players" type="VBoxContainer" parent="PlayspaceMargin"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 10
 
-[node name="Player" parent="MarginContainer/Players" instance=ExtResource("2_mu1oq")]
+[node name="Player" parent="PlayspaceMargin/Players" instance=ExtResource("2_mu1oq")]
 layout_mode = 2
 
-[node name="Player2" parent="MarginContainer/Players" instance=ExtResource("2_mu1oq")]
+[node name="Player2" parent="PlayspaceMargin/Players" instance=ExtResource("2_mu1oq")]
 layout_mode = 2
 
-[node name="Player3" parent="MarginContainer/Players" instance=ExtResource("2_mu1oq")]
+[node name="Player3" parent="PlayspaceMargin/Players" instance=ExtResource("2_mu1oq")]
 layout_mode = 2
 
-[node name="Player4" parent="MarginContainer/Players" instance=ExtResource("2_mu1oq")]
+[node name="Player4" parent="PlayspaceMargin/Players" instance=ExtResource("2_mu1oq")]
 layout_mode = 2
 
-[node name="NextButton" type="Button" parent="MarginContainer/Players"]
+[node name="NextButton" type="Button" parent="PlayspaceMargin/Players"]
 layout_mode = 2
 text = "Next"
 
-[node name="HelpPanel" type="PanelContainer" parent="MarginContainer"]
+[node name="PlaymatMargin" type="MarginContainer" parent="PlayspaceMargin"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Playmat" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iykop")
+
+[node name="ActionMargin" type="MarginContainer" parent="PlayspaceMargin/PlaymatMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 45
+
+[node name="ActionOptions" type="GridContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin"]
+layout_mode = 2
+theme_override_constants/h_separation = 210
+theme_override_constants/v_separation = 160
+columns = 3
+
+[node name="Action1" type="MarginContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionOptions"]
+layout_mode = 2
+
+[node name="ActionCard" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionOptions/Action1" instance=ExtResource("5_ic3gb")]
+layout_mode = 2
+
+[node name="HelpPanel" type="PanelContainer" parent="PlayspaceMargin"]
+visible = false
 custom_minimum_size = Vector2(800, 600)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("3_iykop")
 
-[node name="HelpTexture" type="TextureRect" parent="MarginContainer/HelpPanel"]
+[node name="HelpTexture" type="TextureRect" parent="PlayspaceMargin/HelpPanel"]
 layout_mode = 2
 texture = ExtResource("3_pp1cu")
 
-[connection signal="pressed" from="MarginContainer/Buttons/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Buttons/How to Play" to="." method="_on_how_to_play_pressed"]
-[connection signal="pressed" from="MarginContainer/Players/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="gui_input" from="MarginContainer/HelpPanel/HelpTexture" to="MarginContainer/HelpPanel" method="_on_help_texture_gui_input"]
+[connection signal="pressed" from="PlayspaceMargin/Buttons/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PlayspaceMargin/Buttons/How to Play" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="PlayspaceMargin/Players/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="gui_input" from="PlayspaceMargin/HelpPanel/HelpTexture" to="PlayspaceMargin/HelpPanel" method="_on_help_texture_gui_input"]

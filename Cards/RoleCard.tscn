@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm6um1hlktj8l"]
-
-[ext_resource type="Texture2D" uid="uid://c2hwsn7kbfbyj" path="res://Assets/Images/BaseRole.png" id="1_k8ycs"]
-
-[node name="RoleCard" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_k8ycs")
