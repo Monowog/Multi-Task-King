@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtojdotmm2l52"]
+[gd_scene load_steps=3 format=3 uid="uid://dtojdotmm2l52"]
 
 [ext_resource type="Script" uid="uid://cfna438uphhr6" path="res://Scripts/game_mode.gd" id="1_0wnff"]
+[ext_resource type="PackedScene" uid="uid://bbruuaoq5mbfe" path="res://Scenes/PlayerSelect.tscn" id="2_ftnhc"]
 
 [node name="GameMode" type="Control"]
 layout_mode = 3
@@ -10,38 +11,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0wnff")
+defaultPlayer = ExtResource("2_ftnhc")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -160.0
-offset_right = 80.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="PlayerContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="SelectionContainer" type="HBoxContainer" parent="MarginContainer/PlayerContainer"]
+layout_mode = 2
+theme_override_constants/separation = 360
+alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_constants/separation = 10
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="MarginContainer/ButtonContainer"]
+custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
-text = "Start"
+text = "Start Game"
 
-[node name="BackToMain" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="AddButton" type="Button" parent="MarginContainer/ButtonContainer"]
+layout_mode = 2
+text = "Add Player"
+
+[node name="BackToMain" type="Button" parent="MarginContainer/ButtonContainer"]
 layout_mode = 2
 text = "Back to Main
 "
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="MarginContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ButtonContainer/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ButtonContainer/BackToMain" to="." method="_on_back_to_main_pressed"]

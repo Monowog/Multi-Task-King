@@ -1,0 +1,182 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbruuaoq5mbfe"]
+
+[ext_resource type="Script" uid="uid://bqqq72fpyyg3w" path="res://Scripts/player_select.gd" id="1_3xe7l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nti8l"]
+bg_color = Color(0.5044377, 0.5083895, 0.52820843, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xe7l"]
+bg_color = Color(0.8380338, 0.2990189, 0.31634054, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_733v4"]
+bg_color = Color(0.91948575, 0.6087419, 0.2932225, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thimi"]
+bg_color = Color(0.80784315, 0.7254902, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hknh"]
+bg_color = Color(0.3358017, 0.6962156, 0.2999516, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ph20"]
+bg_color = Color(0.27893087, 0.63394654, 0.8747593, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rvsc"]
+bg_color = Color(0.7138303, 0.4765572, 0.8992408, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="PlayerSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3xe7l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(300, 240)
+layout_mode = 0
+
+[node name="BackgroundPanel" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nti8l")
+
+[node name="StatMargin" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Stats" type="VBoxContainer" parent="MarginContainer/StatMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameInput" type="LineEdit" parent="MarginContainer/StatMargin/Stats"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 22
+placeholder_text = "Enter Name..."
+alignment = 1
+max_length = 16
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+clear_button_enabled = true
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="ComputerOption" type="CheckButton" parent="MarginContainer/StatMargin/Stats"]
+custom_minimum_size = Vector2(30, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Computer?"
+icon_alignment = 2
+
+[node name="ColorOptions" type="HBoxContainer" parent="MarginContainer/StatMargin/Stats"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="ColorOption" type="PanelContainer" parent="MarginContainer/StatMargin/Stats/ColorOptions"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3xe7l")
+
+[node name="ColorOption2" type="PanelContainer" parent="MarginContainer/StatMargin/Stats/ColorOptions"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_733v4")
+
+[node name="ColorOption3" type="PanelContainer" parent="MarginContainer/StatMargin/Stats/ColorOptions"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_thimi")
+
+[node name="ColorOption4" type="PanelContainer" parent="MarginContainer/StatMargin/Stats/ColorOptions"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5hknh")
+
+[node name="ColorOption5" type="PanelContainer" parent="MarginContainer/StatMargin/Stats/ColorOptions"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ph20")
+
+[node name="ColorOption6" type="PanelContainer" parent="MarginContainer/StatMargin/Stats/ColorOptions"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0rvsc")
+
+[node name="RemoveButton" type="Button" parent="MarginContainer/StatMargin/Stats"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Remove Player"
+
+[connection signal="pressed" from="MarginContainer/StatMargin/Stats/RemoveButton" to="." method="_on_remove_button_pressed"]

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="game_data" load_steps=2 format=3 uid="uid://b2xmopuekos7r"]
-
-[ext_resource type="Script" uid="uid://b1oa1cgop30bl" path="res://Scripts/game_data.gd" id="1_ajk5g"]
-
-[resource]
-script = ExtResource("1_ajk5g")
-num_players = 4
-num_turns = 10
-metadata/_custom_type_script = "uid://b1oa1cgop30bl"

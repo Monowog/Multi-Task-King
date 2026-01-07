@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3v1hrakawu75"]
+[gd_scene load_steps=11 format=3 uid="uid://b3v1hrakawu75"]
 
 [ext_resource type="Script" uid="uid://ci7qmb70v24bk" path="res://Scripts/playspace.gd" id="1_cmxdg"]
-[ext_resource type="PackedScene" uid="uid://tp4l8rmpkd4v" path="res://Scenes/Player.tscn" id="2_mu1oq"]
 [ext_resource type="PackedScene" uid="uid://bde0m7gj4446b" path="res://Assets/Cards/CheckSocials.tscn" id="3_ic3gb"]
 [ext_resource type="Script" uid="uid://c8lcd2d7to0k7" path="res://Scripts/help_panel.gd" id="3_iykop"]
 [ext_resource type="Texture2D" uid="uid://dgnbjpvo18o51" path="res://Assets/Images/UI/01.png" id="3_pp1cu"]
@@ -67,25 +66,13 @@ text = "Back to Main Menu"
 layout_mode = 2
 text = "How to Play"
 
-[node name="Players" type="VBoxContainer" parent="PlayspaceMargin"]
+[node name="PlayerController" type="VBoxContainer" parent="PlayspaceMargin"]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 10
 
-[node name="Player" parent="PlayspaceMargin/Players" instance=ExtResource("2_mu1oq")]
-layout_mode = 2
-
-[node name="Player2" parent="PlayspaceMargin/Players" instance=ExtResource("2_mu1oq")]
-layout_mode = 2
-
-[node name="Player3" parent="PlayspaceMargin/Players" instance=ExtResource("2_mu1oq")]
-layout_mode = 2
-
-[node name="Player4" parent="PlayspaceMargin/Players" instance=ExtResource("2_mu1oq")]
-layout_mode = 2
-
-[node name="NextButton" type="Button" parent="PlayspaceMargin/Players"]
+[node name="NextButton" type="Button" parent="PlayspaceMargin/PlayerController"]
 layout_mode = 2
 text = "Next"
 
@@ -144,5 +131,5 @@ texture = ExtResource("3_pp1cu")
 
 [connection signal="pressed" from="PlayspaceMargin/Buttons/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="PlayspaceMargin/Buttons/How to Play" to="." method="_on_how_to_play_pressed"]
-[connection signal="pressed" from="PlayspaceMargin/Players/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="PlayspaceMargin/PlayerController/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="gui_input" from="PlayspaceMargin/HelpPanel/HelpTexture" to="PlayspaceMargin/HelpPanel" method="_on_help_texture_gui_input"]
