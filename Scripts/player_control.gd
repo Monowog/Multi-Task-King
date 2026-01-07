@@ -4,6 +4,6 @@ extends Control
 
 func _ready():
 	if player_data:
-		pass
+		$"Background/MarginContainer/PlayerStats/PlayerName".text = player_data.name
 	else:
 		pass

@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3v1hrakawu75"]
+[gd_scene load_steps=3 format=3 uid="uid://b3v1hrakawu75"]
 
 [ext_resource type="Script" uid="uid://ci7qmb70v24bk" path="res://Scripts/playspace.gd" id="1_cmxdg"]
 [ext_resource type="PackedScene" uid="uid://tp4l8rmpkd4v" path="res://Scenes/Player.tscn" id="2_mu1oq"]
-[ext_resource type="Script" uid="uid://c8lcd2d7to0k7" path="res://Scripts/help_panel.gd" id="3_iykop"]
-[ext_resource type="Texture2D" uid="uid://dgnbjpvo18o51" path="res://Assets/Images/UI/01.png" id="3_pp1cu"]
 
 [node name="Playspace" type="Control"]
 layout_mode = 3
@@ -72,18 +70,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Next"
 
-[node name="HelpPanel" type="PanelContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(800, 600)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-script = ExtResource("3_iykop")
-
-[node name="HelpTexture" type="TextureRect" parent="MarginContainer/HelpPanel"]
-layout_mode = 2
-texture = ExtResource("3_pp1cu")
-
 [connection signal="pressed" from="MarginContainer/Buttons/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Buttons/How to Play" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="MarginContainer/Players/NextButton" to="." method="_on_next_button_pressed"]
-[connection signal="gui_input" from="MarginContainer/HelpPanel/HelpTexture" to="MarginContainer/HelpPanel" method="_on_help_texture_gui_input"]

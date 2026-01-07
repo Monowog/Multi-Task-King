@@ -1,10 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfrtpbt5sjw6l"]
+[gd_scene load_steps=3 format=3 uid="uid://bfrtpbt5sjw6l"]
 
-[ext_resource type="Script" uid="uid://b1oa1cgop30bl" path="res://Scripts/game_data.gd" id="1_smftj"]
+[ext_resource type="Script" uid="uid://cai3t3ow7sp40" path="res://Scripts/global_data.gd" id="1_gqdbo"]
+[ext_resource type="Resource" uid="uid://b2xmopuekos7r" path="res://Resources/global_data.tres" id="2_6nxoj"]
 
 [node name="GlobalData" type="Node"]
-script = ExtResource("1_smftj")
-num_players = 4
-num_rounds = 10
-board_size = Vector2(1000, 600)
-player_names = Array[String](["Player1", "Player2", "Player3", "Player4"])
+script = ExtResource("1_gqdbo")
+data = ExtResource("2_6nxoj")
