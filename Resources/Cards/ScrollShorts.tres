@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_ca3sd")
-name = "Scroll Shorts"
+cardName = "Scroll Shorts"
 duration = 2
-dopamine = 1
+baseDopamine = 1
+background = Color(0.427493, 0.42749307, 0.42749307, 1)
 metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

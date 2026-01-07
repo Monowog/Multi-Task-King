@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_jiiod")
-name = "Listen to Music"
+cardName = "Listen to Music"
 duration = 3
-dopamine = 2
+baseDopamine = 2
+background = Color(0.6445998, 0.2621281, 0.3370937, 1)
 metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

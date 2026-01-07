@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://tp4l8rmpkd4v"]
+[gd_scene load_steps=8 format=3 uid="uid://tp4l8rmpkd4v"]
 
 [ext_resource type="Script" uid="uid://cexysofacsdpc" path="res://Scripts/player_control.gd" id="1_dewec"]
 [ext_resource type="StyleBox" uid="uid://ccp5lv6b2u3gt" path="res://Assets/Styles/PlayerBG.tres" id="1_gntrk"]
@@ -13,6 +13,17 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.07206599, 0.04790227, 0.25236866, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ixxa"]
+border_width_left = 2
+border_width_top = 1
+border_width_right = 2
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
@@ -157,6 +168,7 @@ text = "Dopamine"
 [node name="PanelContainer" type="PanelContainer" parent="Background/MarginContainer/PlayerStats/MarginContainer/Dopamine"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ixxa")
 
 [node name="Label" type="Label" parent="Background/MarginContainer/PlayerStats/MarginContainer/Dopamine/PanelContainer"]
 layout_mode = 2

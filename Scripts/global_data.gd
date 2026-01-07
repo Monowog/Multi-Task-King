@@ -17,6 +17,6 @@ func delete_player(index : int) -> void:
 	num_players -= 1
 	player_names.remove_at(index)
 
-func add_player(name : String) -> void:
+func add_player(playerName : String) -> void:
 	num_players += 1
-	player_names.append(name)
+	player_names.append(playerName)

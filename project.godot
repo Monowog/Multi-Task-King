@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="MultiTaskKing"
+config/version="0.1"
 run/main_scene="uid://6vggpgfvf72y"
 config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="uid://cyuvev57y1ug2"
 
 [autoload]
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr1se7c4nni2f"]
+[gd_scene load_steps=10 format=3 uid="uid://sbh6l4akev3e"]
 
-[ext_resource type="Script" uid="uid://bxw62y1kl03ch" path="res://Scripts/action_card.gd" id="1_g1o6y"]
-[ext_resource type="Texture2D" uid="uid://cltl0gjoa22g2" path="res://Assets/Images/Cards/BaseAct.png" id="1_tx3in"]
-[ext_resource type="Texture2D" uid="uid://qvadn60vyvbt" path="res://Assets/Images/UI/PNG/Default (128px)/knowledge.png" id="2_x0nsa"]
-[ext_resource type="Texture2D" uid="uid://bokdymj4a7rq0" path="res://Assets/Images/UI/PNG/Default (128px)/duration.png" id="3_k57vs"]
-[ext_resource type="Texture2D" uid="uid://c14mitprcjbr6" path="res://Assets/Images/UI/PNG/Default (128px)/medium.png" id="4_g1o6y"]
+[ext_resource type="Script" uid="uid://bxw62y1kl03ch" path="res://Scripts/action_card.gd" id="1_55be8"]
+[ext_resource type="Resource" uid="uid://lw558bvr1ph8" path="res://Resources/Cards/ListenToMusic.tres" id="2_55be8"]
+[ext_resource type="Texture2D" uid="uid://cltl0gjoa22g2" path="res://Assets/Images/Cards/BaseAct.png" id="3_4qthc"]
+[ext_resource type="Texture2D" uid="uid://qvadn60vyvbt" path="res://Assets/Images/UI/PNG/Default (128px)/knowledge.png" id="4_5bc61"]
+[ext_resource type="Texture2D" uid="uid://bokdymj4a7rq0" path="res://Assets/Images/UI/PNG/Default (128px)/duration.png" id="5_t8xot"]
+[ext_resource type="Texture2D" uid="uid://c14mitprcjbr6" path="res://Assets/Images/UI/PNG/Default (128px)/medium.png" id="6_jbwmc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k57vs"]
 
@@ -32,7 +33,8 @@ corner_radius_bottom_left = 2
 [node name="ActionCard" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_g1o6y")
+script = ExtResource("1_55be8")
+card_data = ExtResource("2_55be8")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(120, 150)
@@ -46,7 +48,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_k57vs")
 
 [node name="BGTexture" type="TextureRect" parent="MarginContainer/Background"]
 layout_mode = 2
-texture = ExtResource("1_tx3in")
+texture = ExtResource("3_4qthc")
 expand_mode = 1
 
 [node name="CardStats" type="VBoxContainer" parent="MarginContainer"]
@@ -81,7 +83,7 @@ size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/CardStats/AdditionalText"]
 layout_mode = 2
-texture = ExtResource("2_x0nsa")
+texture = ExtResource("4_5bc61")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="MarginContainer/CardStats/AdditionalText"]
@@ -109,7 +111,7 @@ layout_mode = 2
 
 [node name="DurationTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("3_k57vs")
+texture = ExtResource("5_t8xot")
 expand_mode = 1
 
 [node name="Time" type="Label" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
@@ -145,7 +147,7 @@ layout_mode = 2
 
 [node name="AmiTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("4_g1o6y")
+texture = ExtResource("6_jbwmc")
 expand_mode = 1
 
 [node name="Ami" type="Label" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
