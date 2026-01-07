@@ -2,29 +2,29 @@ extends Control
 
 @export var card_data : action_resource
 
-var cardName : String
-var duration : int
-var baseDopamine : int
-var background : Color
-var hasModifier : bool
-var hasMultiplier : bool
-var hasEffect : bool
-var effectText : String
-var currDopamine : int
+@onready var cardName : String = card_data.cardName
+@onready var duration : int = card_data.duration
+@onready var baseDopamine : int = card_data.baseDopamine
+@onready var background : Color = card_data.background
+@onready var hasModifier : bool = card_data.hasModifier
+@onready var hasMultiplier : bool = card_data.hasMultiplier
+@onready var hasEffect : bool = card_data.hasEffect
+@onready var effectText : String = card_data.effectText
+@onready var currDopamine : int = baseDopamine
 
 func _ready() -> void:
-	cardName = card_data.cardName
-	duration = card_data.duration
-	baseDopamine = card_data.baseDopamine
-	background = card_data.background
-	hasModifier = card_data.hasModifier
-	hasMultiplier = card_data.hasMultiplier
-	hasEffect = card_data.hasEffect
-	effectText = card_data.effectText
-	
 	$"MarginContainer/CardStats/NameMargin/CardNameBG/NameLabel".text = cardName
 	$"MarginContainer/CardStats/StatMargin/Duration/PanelContainer/DurationText".text = str(duration)
 	$"MarginContainer/CardStats/StatMargin/Ami/PanelContainer/AmiText".text = str(baseDopamine)
 	$"MarginContainer/CardStats/NameMargin/CardNameBG".get_theme_stylebox("panel").bg_color = background
 	$"MarginContainer/CardStats/AdditionalText/TextureRect".visible = hasEffect
-	currDopamine = baseDopamine
+
+func _on_click_box_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		SignalManager.clicked.emit(self)
+
+func _on_click_box_mouse_entered() -> void:
+	SignalManager.hovered.emit(self)
+
+func _on_click_box_mouse_exited() -> void:
+	SignalManager.unhovered.emit(self)

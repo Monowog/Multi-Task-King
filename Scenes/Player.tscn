@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://tp4l8rmpkd4v"]
+[gd_scene load_steps=7 format=3 uid="uid://tp4l8rmpkd4v"]
 
 [ext_resource type="Script" uid="uid://cexysofacsdpc" path="res://Scripts/player_control.gd" id="1_dewec"]
 [ext_resource type="StyleBox" uid="uid://ccp5lv6b2u3gt" path="res://Assets/Styles/PlayerBG.tres" id="1_gntrk"]
 [ext_resource type="StyleBox" uid="uid://bdlhtyvvlhxea" path="res://Assets/Styles/AttentionBox.tres" id="1_rpqav"]
-[ext_resource type="Resource" uid="uid://d3v41o4kikqvn" path="res://Resources/Player/default_player.tres" id="2_5ixxa"]
 [ext_resource type="Texture2D" uid="uid://1js5iwbbwp6j" path="res://Assets/Images/UI/PNG/Default (256px)/heavy.png" id="2_kyqiw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gntrk"]
@@ -19,6 +18,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ixxa"]
+bg_color = Color(0.4661808, 0.46618086, 0.46618068, 1)
 border_width_left = 2
 border_width_top = 1
 border_width_right = 2
@@ -34,7 +34,6 @@ custom_minimum_size = Vector2(160, 160)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_dewec")
-player_data = ExtResource("2_5ixxa")
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -57,7 +56,8 @@ theme_override_constants/separation = 15
 [node name="PlayerName" type="Label" parent="Background/MarginContainer/PlayerStats"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8509804)
 text = "PlayerName"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -170,8 +170,10 @@ custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ixxa")
 
-[node name="Label" type="Label" parent="Background/MarginContainer/PlayerStats/MarginContainer/Dopamine/PanelContainer"]
+[node name="TotalAmi" type="Label" parent="Background/MarginContainer/PlayerStats/MarginContainer/Dopamine/PanelContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

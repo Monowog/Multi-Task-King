@@ -111,7 +111,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Stats" type="VBoxContainer" parent="MarginContainer/StatMargin"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 10
 
 [node name="NameInput" type="LineEdit" parent="MarginContainer/StatMargin/Stats"]
 custom_minimum_size = Vector2(0, 50)
@@ -130,12 +130,21 @@ shortcut_keys_enabled = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="ComputerOption" type="CheckButton" parent="MarginContainer/StatMargin/Stats"]
+[node name="Computer" type="HBoxContainer" parent="MarginContainer/StatMargin/Stats"]
+layout_mode = 2
+
+[node name="ComputerLabel" type="Label" parent="MarginContainer/StatMargin/Stats/Computer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8039216)
+theme_override_font_sizes/font_size = 18
+text = "Computer?"
+
+[node name="ComputerOption" type="CheckButton" parent="MarginContainer/StatMargin/Stats/Computer"]
 custom_minimum_size = Vector2(30, 40)
 layout_mode = 2
+size_flags_horizontal = 10
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Computer?"
-icon_alignment = 2
+expand_icon = true
 
 [node name="ColorOptions" type="HBoxContainer" parent="MarginContainer/StatMargin/Stats"]
 custom_minimum_size = Vector2(0, 40)
@@ -143,7 +152,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
 
-[node name="ColorOption" type="PanelContainer" parent="MarginContainer/StatMargin/Stats/ColorOptions"]
+[node name="ColorOption1" type="PanelContainer" parent="MarginContainer/StatMargin/Stats/ColorOptions"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3xe7l")
@@ -174,9 +183,16 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0rvsc")
 
 [node name="RemoveButton" type="Button" parent="MarginContainer/StatMargin/Stats"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Remove Player"
 
+[connection signal="text_changed" from="MarginContainer/StatMargin/Stats/NameInput" to="." method="_on_name_input_text_changed"]
+[connection signal="gui_input" from="MarginContainer/StatMargin/Stats/ColorOptions/ColorOption1" to="." method="_on_color_option_1_gui_input"]
+[connection signal="gui_input" from="MarginContainer/StatMargin/Stats/ColorOptions/ColorOption2" to="." method="_on_color_option_2_gui_input"]
+[connection signal="gui_input" from="MarginContainer/StatMargin/Stats/ColorOptions/ColorOption3" to="." method="_on_color_option_3_gui_input"]
+[connection signal="gui_input" from="MarginContainer/StatMargin/Stats/ColorOptions/ColorOption4" to="." method="_on_color_option_4_gui_input"]
+[connection signal="gui_input" from="MarginContainer/StatMargin/Stats/ColorOptions/ColorOption5" to="." method="_on_color_option_5_gui_input"]
+[connection signal="gui_input" from="MarginContainer/StatMargin/Stats/ColorOptions/ColorOption6" to="." method="_on_color_option_6_gui_input"]
 [connection signal="pressed" from="MarginContainer/StatMargin/Stats/RemoveButton" to="." method="_on_remove_button_pressed"]

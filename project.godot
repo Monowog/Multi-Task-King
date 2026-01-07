@@ -20,12 +20,15 @@ config/icon="uid://cyuvev57y1ug2"
 
 SceneManager="*res://Scenes/scene_manager.tscn"
 GlobalData="*res://Scenes/global_data.tscn"
+SignalManager="*res://Scenes/SignalManager.tscn"
 
 [display]
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
+window/stretch/mode="canvas_items"
 
 [gui]
 
 fonts/dynamic_fonts/use_oversampling=false
+theme/default_font_multichannel_signed_distance_field=true

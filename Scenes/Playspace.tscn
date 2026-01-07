@@ -1,17 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3v1hrakawu75"]
+[gd_scene load_steps=9 format=3 uid="uid://b3v1hrakawu75"]
 
 [ext_resource type="Script" uid="uid://ci7qmb70v24bk" path="res://Scripts/playspace.gd" id="1_cmxdg"]
-[ext_resource type="PackedScene" uid="uid://bde0m7gj4446b" path="res://Assets/Cards/CheckSocials.tscn" id="3_ic3gb"]
+[ext_resource type="PackedScene" uid="uid://tp4l8rmpkd4v" path="res://Scenes/Player.tscn" id="2_mu1oq"]
+[ext_resource type="Script" uid="uid://cru3ua1g2hgah" path="res://Scripts/action_controller.gd" id="3_ic3gb"]
 [ext_resource type="Script" uid="uid://c8lcd2d7to0k7" path="res://Scripts/help_panel.gd" id="3_iykop"]
 [ext_resource type="Texture2D" uid="uid://dgnbjpvo18o51" path="res://Assets/Images/UI/01.png" id="3_pp1cu"]
-[ext_resource type="PackedScene" uid="uid://sbh6l4akev3e" path="res://Assets/Cards/ListenToMusic.tscn" id="4_4thn0"]
-[ext_resource type="PackedScene" uid="uid://cdmxg7bwxjwtv" path="res://Assets/Cards/ReadABook.tscn" id="5_0syw4"]
-[ext_resource type="PackedScene" uid="uid://ofmdeiod56eq" path="res://Assets/Cards/ScrollShorts.tscn" id="6_b3cqc"]
-[ext_resource type="PackedScene" uid="uid://rq78fm6ujyhu" path="res://Assets/Cards/TakeAHike.tscn" id="7_wqvlv"]
-[ext_resource type="PackedScene" uid="uid://coh71bfv44k0j" path="res://Assets/Cards/WatchAFilm.tscn" id="8_aa7cy"]
+[ext_resource type="PackedScene" uid="uid://decnch8r4jw6q" path="res://Assets/Cards/ScrollShorts.tscn" id="4_brq5p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iykop"]
-bg_color = Color(0.2051174, 0.20511746, 0.20511732, 1)
+bg_color = Color(0.9384497, 0.9384497, 0.9384497, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -21,6 +18,13 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic3gb"]
+bg_color = Color(0, 0, 0, 0.47058824)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="Playspace" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -29,6 +33,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cmxdg")
+player = ExtResource("2_mu1oq")
 
 [node name="PlayspaceMargin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -37,10 +42,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
 [node name="Buttons" type="HBoxContainer" parent="PlayspaceMargin"]
 custom_minimum_size = Vector2(40, 40)
@@ -77,7 +82,7 @@ layout_mode = 2
 text = "Next"
 
 [node name="PlaymatMargin" type="MarginContainer" parent="PlayspaceMargin"]
-custom_minimum_size = Vector2(700, 400)
+custom_minimum_size = Vector2(700, 450)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -88,34 +93,61 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_iykop")
 
 [node name="ActionMargin" type="MarginContainer" parent="PlayspaceMargin/PlaymatMargin"]
 layout_mode = 2
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 45
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 45
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
 
-[node name="ActionOptions" type="GridContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin"]
+[node name="ActionSlots" type="GridContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin"]
 layout_mode = 2
-theme_override_constants/h_separation = 210
-theme_override_constants/v_separation = 160
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 5
 columns = 3
 
-[node name="ActionCard" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionOptions" instance=ExtResource("3_ic3gb")]
+[node name="Slot1" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic3gb")
 
-[node name="ActionCard2" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionOptions" instance=ExtResource("4_4thn0")]
+[node name="Slot2" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic3gb")
 
-[node name="ActionCard3" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionOptions" instance=ExtResource("5_0syw4")]
+[node name="Slot3" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic3gb")
 
-[node name="ActionCard4" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionOptions" instance=ExtResource("6_b3cqc")]
+[node name="Slot4" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic3gb")
 
-[node name="ActionCard5" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionOptions" instance=ExtResource("7_wqvlv")]
+[node name="Slot5" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic3gb")
 
-[node name="ActionCard6" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionOptions" instance=ExtResource("8_aa7cy")]
+[node name="Slot6" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic3gb")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ActionOptions" type="GridContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 220
+theme_override_constants/v_separation = 204
+columns = 3
+script = ExtResource("3_ic3gb")
+actionCard = ExtResource("4_brq5p")
 
 [node name="HelpPanel" type="PanelContainer" parent="PlayspaceMargin"]
 visible = false

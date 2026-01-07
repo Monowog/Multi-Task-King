@@ -9,13 +9,13 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k57vs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0nsa"]
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.21960784, 0.2627451, 0.2627451, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21960784, 0.2627451, 0.2627451, 0.80784315)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsbsm"]
 bg_color = Color(1, 1, 1, 1)
@@ -24,10 +24,10 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="ActionCard" type="Control"]
 layout_mode = 3
@@ -35,7 +35,7 @@ anchors_preset = 0
 script = ExtResource("1_g1o6y")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(120, 150)
+custom_minimum_size = Vector2(140, 180)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -51,7 +51,7 @@ expand_mode = 1
 
 [node name="CardStats" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 7
 
 [node name="NameMargin" type="MarginContainer" parent="MarginContainer/CardStats"]
 layout_mode = 2
@@ -60,7 +60,7 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 
 [node name="CardNameBG" type="PanelContainer" parent="MarginContainer/CardStats/NameMargin"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x0nsa")
 
@@ -68,13 +68,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_x0nsa")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 11
-text = "Play Board Games"
+theme_override_font_sizes/font_size = 13
+text = "Action Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AdditionalText" type="MarginContainer" parent="MarginContainer/CardStats"]
-custom_minimum_size = Vector2(50, 40)
+custom_minimum_size = Vector2(70, 55)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -87,7 +87,7 @@ expand_mode = 1
 [node name="Label" type="Label" parent="MarginContainer/CardStats/AdditionalText"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 11
 text = "Effect"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -104,7 +104,7 @@ size_flags_vertical = 8
 theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CardStats/StatMargin/Duration"]
-custom_minimum_size = Vector2(30, 28)
+custom_minimum_size = Vector2(40, 35)
 layout_mode = 2
 
 [node name="DurationTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
@@ -115,7 +115,7 @@ expand_mode = 1
 [node name="Time" type="Label" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 8
 text = "Time"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -140,7 +140,7 @@ size_flags_vertical = 8
 theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CardStats/StatMargin/Ami"]
-custom_minimum_size = Vector2(30, 28)
+custom_minimum_size = Vector2(40, 35)
 layout_mode = 2
 
 [node name="AmiTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
@@ -151,7 +151,7 @@ expand_mode = 1
 [node name="Ami" type="Label" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 6
+theme_override_font_sizes/font_size = 8
 text = "Ami"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -167,3 +167,13 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ClickBox" type="Container" parent="."]
+custom_minimum_size = Vector2(140, 180)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="gui_input" from="ClickBox" to="." method="_on_click_box_gui_input"]
+[connection signal="mouse_entered" from="ClickBox" to="." method="_on_click_box_mouse_entered"]
+[connection signal="mouse_exited" from="ClickBox" to="." method="_on_click_box_mouse_exited"]

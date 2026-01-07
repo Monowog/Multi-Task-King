@@ -4,4 +4,4 @@
 
 [node name="GlobalData" type="Node"]
 script = ExtResource("1_gqdbo")
-player_colors = Array[Color]([Color(0.22596541, 0.5081093, 1, 1), Color(0.47058824, 0.81960785, 0, 1), Color(0.96151835, 4.4520943e-06, 9.62615e-07, 1), Color(0.6039216, 0, 0.7411765, 1)])
+player_colors = Array[Color]([Color(0.4117647, 0.4117647, 0.4117647, 1), Color(0.4117647, 0.4117647, 0.4117647, 1), Color(0.4117647, 0.4117647, 0.4117647, 1), Color(0.4117647, 0.4117647, 0.4117647, 1)])
