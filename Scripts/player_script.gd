@@ -1,5 +1,8 @@
 extends Control 
 
+@export var score : int = 0
+@export var attention : int = 5
+
 @onready var background = $Background
 
 func _ready():

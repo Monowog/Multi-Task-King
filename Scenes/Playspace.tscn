@@ -1,16 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://b3v1hrakawu75"]
+[gd_scene load_steps=22 format=3 uid="uid://b3v1hrakawu75"]
 
 [ext_resource type="Script" uid="uid://ci7qmb70v24bk" path="res://Scripts/playspace.gd" id="1_cmxdg"]
-[ext_resource type="PackedScene" uid="uid://tp4l8rmpkd4v" path="res://Scenes/Player.tscn" id="2_mu1oq"]
 [ext_resource type="Script" uid="uid://03ellonjlro6" path="res://Scripts/player_controller.gd" id="3_fmulb"]
 [ext_resource type="Script" uid="uid://cru3ua1g2hgah" path="res://Scripts/action_controller.gd" id="3_ic3gb"]
 [ext_resource type="Script" uid="uid://c8lcd2d7to0k7" path="res://Scripts/help_panel.gd" id="3_iykop"]
 [ext_resource type="Script" uid="uid://bkweku86uv3j1" path="res://Scripts/action_slots.gd" id="3_nl00j"]
 [ext_resource type="Texture2D" uid="uid://dgnbjpvo18o51" path="res://Assets/Images/UI/01.png" id="3_pp1cu"]
 [ext_resource type="Texture2D" uid="uid://dosg8425blq12" path="res://Assets/Images/UI/Background.jpg" id="3_xkknd"]
-[ext_resource type="Script" uid="uid://be1c1ca8qdmp1" path="res://Scenes/player_slots.gd" id="4_4thn0"]
+[ext_resource type="Script" uid="uid://be1c1ca8qdmp1" path="res://Scripts/player_slots.gd" id="4_4thn0"]
 [ext_resource type="FontFile" uid="uid://nauudocebh0y" path="res://Assets/Fonts/Unitblock-JpJma.ttf" id="6_0syw4"]
-[ext_resource type="PackedScene" uid="uid://dmbumf6bewrq8" path="res://Assets/Cards/CheckSocials.tscn" id="9_0syw4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loegc"]
 bg_color = Color(0.6, 0.6, 0.6, 0.5568628)
@@ -136,7 +134,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cmxdg")
-player = ExtResource("2_mu1oq")
 
 [node name="BackgroundMargin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -187,6 +184,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 50
@@ -343,7 +341,6 @@ theme_override_constants/h_separation = 220
 theme_override_constants/v_separation = 204
 columns = 3
 script = ExtResource("3_ic3gb")
-actionCard = ExtResource("9_0syw4")
 
 [node name="HelpPanel" type="PanelContainer" parent="PlayspaceMargin"]
 visible = false

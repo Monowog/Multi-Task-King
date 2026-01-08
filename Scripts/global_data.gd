@@ -4,14 +4,25 @@ extends Node
 @export var num_turns = 10
 @export var player_names = ["Player1","Player2","Player3","Player4"]
 @export var player_colors : Array[Color]
-@export var deck_dict = {
-	"CheckSocials": 10,
-	"ScrollShorts": 8,
-	"ListenToMusic": 8,
-	"TakeAHike": 6,
-	"WatchAFilm": 6,
-	"ReadABook": 6
+
+@export var card_list = {
+	"Check Socials": preload("res://Assets/Cards/CheckSocials.tscn"),
+	"Scroll Shorts": preload("res://Assets/Cards/ScrollShorts.tscn"),
+	"Listen to Music": preload("res://Assets/Cards/ListenToMusic.tscn"),
+	"Take a Hike": preload("res://Assets/Cards/TakeAHike.tscn"),
+	"Watch a Film": preload("res://Assets/Cards/WatchAFilm.tscn"),
+	"Read a Book": preload("res://Assets/Cards/ReadABook.tscn")
 }
+
+@export var deck_dict = {
+	"Check Socials": 10,
+	"Scroll Shorts": 8,
+	"Listen to Music": 8,
+	"Take a Hike": 6,
+	"Watch a Film": 6,
+	"Read a Book": 6
+}
+
 
 var curr_turn = 1
 

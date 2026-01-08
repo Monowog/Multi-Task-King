@@ -13,9 +13,7 @@ func _ready() -> void:
 	SignalManager.unhighlight_slot.connect(_unhighlight_slot)
 
 func _highlight_slot(index: int) -> void:
-	var slot = self.get_child(index)
 	slotArray[index].get_theme_stylebox("panel").bg_color = highlightColor
 
 func _unhighlight_slot(index: int) -> void:
-	var slot = self.get_child(index)
 	slotArray[index].get_theme_stylebox("panel").bg_color = defaultColor
