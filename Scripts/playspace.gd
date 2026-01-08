@@ -16,6 +16,8 @@ var playerScores : Array[int] = [] #doesn't swap (access using VALUE of playerOr
 var deckList : Array[String] = []
 var discard : Array[String] = []
 
+var cardsTaken : int = 0
+
 func _ready() -> void:
 	SignalManager.action_clicked.connect(_on_action_clicked)
 	
@@ -43,11 +45,15 @@ func swap_cards(index1 : int, index2 : int):
 func shuffle(numShuffles : int) -> void:
 	for card in discard:
 		deckList.append(card)
+	discard.clear()
 	for x in range(numShuffles):
 		for card in deckList:
 			swap_cards(GlobalData.rng.randi_range(0,deckList.size()-1), GlobalData.rng.randi_range(0,deckList.size()-1))
+	print(str(deckList))
 
 func draw_card() -> String:
+	if deckList.size() == 0:
+		shuffle(1)
 	var topCard = deckList[0]
 	deckList.pop_front()
 	return topCard 
@@ -62,6 +68,8 @@ func _on_next_button_pressed() -> void:
 		turnText.text = "Turn " + str(currTurn) + "/" + str(GlobalData.num_turns)
 		SignalManager.update_players.emit(activePlayer)
 	for card in hand.get_children():
+		SignalManager.draw_card.emit(draw_card())
+		discard.append(card.get_child(0).name)
 		card.queue_free()
 
 func _on_back_button_pressed() -> void:
