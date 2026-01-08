@@ -15,4 +15,5 @@ signal unhighlight_slot(index: int)
 signal update_players(activePlayer: int)
 
 #Game Signals
+signal draw_card(cardName: String)
 signal end_turn()

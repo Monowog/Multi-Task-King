@@ -1,0 +1,362 @@
+[gd_scene load_steps=22 format=3 uid="uid://b3v1hrakawu75"]
+
+[ext_resource type="Script" uid="uid://ci7qmb70v24bk" path="res://Scripts/playspace.gd" id="1_cmxdg"]
+[ext_resource type="Script" uid="uid://03ellonjlro6" path="res://Scripts/player_controller.gd" id="3_fmulb"]
+[ext_resource type="Script" uid="uid://cru3ua1g2hgah" path="res://Scripts/action_controller.gd" id="3_ic3gb"]
+[ext_resource type="Script" uid="uid://c8lcd2d7to0k7" path="res://Scripts/help_panel.gd" id="3_iykop"]
+[ext_resource type="Script" uid="uid://bkweku86uv3j1" path="res://Scripts/action_slots.gd" id="3_nl00j"]
+[ext_resource type="Texture2D" uid="uid://dgnbjpvo18o51" path="res://Assets/Images/UI/01.png" id="3_pp1cu"]
+[ext_resource type="Texture2D" uid="uid://dosg8425blq12" path="res://Assets/Images/UI/Background.jpg" id="3_xkknd"]
+[ext_resource type="Script" uid="uid://be1c1ca8qdmp1" path="res://Scripts/player_slots.gd" id="4_4thn0"]
+[ext_resource type="FontFile" uid="uid://nauudocebh0y" path="res://Assets/Fonts/Unitblock-JpJma.ttf" id="6_0syw4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loegc"]
+bg_color = Color(0.6, 0.6, 0.6, 0.5568628)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqvlv"]
+bg_color = Color(0, 0, 0, 0.45490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa7cy"]
+bg_color = Color(0, 0, 0, 0.45490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6eorw"]
+bg_color = Color(0, 0, 0, 0.45490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4ftb"]
+bg_color = Color(0, 0, 0, 0.45490196)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iykop"]
+bg_color = Color(0.9384497, 0.9384497, 0.9384497, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.37413922, 0.37413934, 0.374139, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nl00j"]
+bg_color = Color(0, 0, 0, 0.47058824)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmulb"]
+bg_color = Color(0, 0, 0, 0.47058824)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkknd"]
+bg_color = Color(0, 0, 0, 0.47058824)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4thn0"]
+bg_color = Color(0, 0, 0, 0.47058824)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0syw4"]
+bg_color = Color(0, 0, 0, 0.47058824)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3cqc"]
+bg_color = Color(0, 0, 0, 0.47058824)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Playspace" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cmxdg")
+
+[node name="BackgroundMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="BackgroundMargin"]
+layout_mode = 2
+texture = ExtResource("3_xkknd")
+expand_mode = 1
+
+[node name="HandMargin" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 900.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HandBackground" type="PanelContainer" parent="HandMargin"]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_loegc")
+
+[node name="HandSubmargin" type="MarginContainer" parent="HandMargin"]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 140
+
+[node name="HandCards" type="HBoxContainer" parent="HandMargin/HandSubmargin"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="PlayspaceMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="PlayerSlots" type="VBoxContainer" parent="PlayspaceMargin"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 0
+script = ExtResource("4_4thn0")
+defaultBackground = Color(0, 0, 0, 0.33333334)
+activeBackground = Color(0, 0.9480956, 0, 0.43529412)
+
+[node name="PlayerSlot1" type="PanelContainer" parent="PlayspaceMargin/PlayerSlots"]
+visible = false
+custom_minimum_size = Vector2(202, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wqvlv")
+
+[node name="PlayerSlot2" type="PanelContainer" parent="PlayspaceMargin/PlayerSlots"]
+visible = false
+custom_minimum_size = Vector2(202, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aa7cy")
+
+[node name="PlayerSlot3" type="PanelContainer" parent="PlayspaceMargin/PlayerSlots"]
+visible = false
+custom_minimum_size = Vector2(202, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6eorw")
+
+[node name="PlayerSlot4" type="PanelContainer" parent="PlayspaceMargin/PlayerSlots"]
+visible = false
+custom_minimum_size = Vector2(202, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o4ftb")
+
+[node name="PlayerMargin" type="MarginContainer" parent="PlayspaceMargin"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 4
+
+[node name="PlayerController" type="VBoxContainer" parent="PlayspaceMargin/PlayerMargin"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+script = ExtResource("3_fmulb")
+
+[node name="NextButton" type="Button" parent="PlayspaceMargin/PlayerMargin/PlayerController"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Next Turn"
+
+[node name="Buttons" type="HBoxContainer" parent="PlayspaceMargin"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Turn" type="RichTextLabel" parent="PlayspaceMargin/Buttons"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_0syw4")
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "Turn X/Y"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="PlayspaceMargin/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_0syw4")
+theme_override_font_sizes/font_size = 28
+text = "Back to Main Menu"
+
+[node name="How to Play" type="Button" parent="PlayspaceMargin/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_0syw4")
+theme_override_font_sizes/font_size = 28
+text = "How to Play"
+
+[node name="PlaymatMargin" type="MarginContainer" parent="PlayspaceMargin"]
+custom_minimum_size = Vector2(700, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 60
+
+[node name="Playmat" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iykop")
+
+[node name="ActionMargin" type="MarginContainer" parent="PlayspaceMargin/PlaymatMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="ActionSlots" type="GridContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin"]
+layout_mode = 2
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 5
+columns = 3
+script = ExtResource("3_nl00j")
+defaultColor = Color(0, 0, 0, 0.43529412)
+highlightColor = Color(0.06666667, 0.78039217, 0.3019608, 0.36862746)
+
+[node name="Slot1" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nl00j")
+
+[node name="Slot2" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fmulb")
+
+[node name="Slot3" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xkknd")
+
+[node name="Slot4" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4thn0")
+
+[node name="Slot5" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0syw4")
+
+[node name="Slot6" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(160, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b3cqc")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ActionOptions" type="GridContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 220
+theme_override_constants/v_separation = 204
+columns = 3
+script = ExtResource("3_ic3gb")
+
+[node name="HelpPanel" type="PanelContainer" parent="PlayspaceMargin"]
+visible = false
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("3_iykop")
+
+[node name="HelpTexture" type="TextureRect" parent="PlayspaceMargin/HelpPanel"]
+layout_mode = 2
+texture = ExtResource("3_pp1cu")
+
+[connection signal="pressed" from="PlayspaceMargin/PlayerMargin/PlayerController/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="PlayspaceMargin/Buttons/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PlayspaceMargin/Buttons/How to Play" to="." method="_on_how_to_play_pressed"]
+[connection signal="gui_input" from="PlayspaceMargin/HelpPanel/HelpTexture" to="PlayspaceMargin/HelpPanel" method="_on_help_texture_gui_input"]

@@ -23,11 +23,12 @@ extends Node
 	"Read a Book": 6
 }
 
+var rng = RandomNumberGenerator.new()
 
 var curr_turn = 1
 
 func _ready():
-	pass
+	rng.randomize()
 	
 func delete_player(index : int) -> void:
 	num_players -= 1
