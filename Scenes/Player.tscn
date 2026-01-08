@@ -1,9 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://tp4l8rmpkd4v"]
+[gd_scene load_steps=8 format=3 uid="uid://tp4l8rmpkd4v"]
 
-[ext_resource type="Script" uid="uid://cexysofacsdpc" path="res://Scripts/player_control.gd" id="1_dewec"]
+[ext_resource type="Script" uid="uid://cexysofacsdpc" path="res://Scripts/player_script.gd" id="1_dewec"]
 [ext_resource type="StyleBox" uid="uid://ccp5lv6b2u3gt" path="res://Assets/Styles/PlayerBG.tres" id="1_gntrk"]
 [ext_resource type="StyleBox" uid="uid://bdlhtyvvlhxea" path="res://Assets/Styles/AttentionBox.tres" id="1_rpqav"]
 [ext_resource type="Texture2D" uid="uid://1js5iwbbwp6j" path="res://Assets/Images/UI/PNG/Default (256px)/heavy.png" id="2_kyqiw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dewec"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2520277, 0.25202766, 0.25202748, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gntrk"]
 bg_color = Color(0.25929368, 0.25929374, 0.2592936, 1)
@@ -30,7 +39,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [node name="Player" type="Control"]
-custom_minimum_size = Vector2(160, 160)
+custom_minimum_size = Vector2(180, 180)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_dewec")
@@ -51,14 +60,31 @@ theme_override_constants/margin_bottom = 4
 
 [node name="PlayerStats" type="VBoxContainer" parent="Background/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 5
 
 [node name="PlayerName" type="Label" parent="Background/MarginContainer/PlayerStats"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8509804)
+theme_override_font_sizes/font_size = 28
 text = "PlayerName"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttnLabelPanel" type="PanelContainer" parent="Background/MarginContainer/PlayerStats"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_dewec")
+
+[node name="AttnLabel" type="Label" parent="Background/MarginContainer/PlayerStats/AttnLabelPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
+text = "Attention"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -134,23 +160,25 @@ custom_minimum_size = Vector2(14, 30)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("1_rpqav")
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer/PlayerStats"]
+[node name="PointsMargin" type="MarginContainer" parent="Background/MarginContainer/PlayerStats"]
 layout_mode = 2
 theme_override_constants/margin_left = 3
 theme_override_constants/margin_right = 3
 
-[node name="Dopamine" type="HBoxContainer" parent="Background/MarginContainer/PlayerStats/MarginContainer"]
+[node name="Dopamine" type="HBoxContainer" parent="Background/MarginContainer/PlayerStats/PointsMargin"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
-[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/PlayerStats/MarginContainer/Dopamine"]
-custom_minimum_size = Vector2(40, 40)
+[node name="TextureRect" type="TextureRect" parent="Background/MarginContainer/PlayerStats/PointsMargin/Dopamine"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("2_kyqiw")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Background/MarginContainer/PlayerStats/MarginContainer/Dopamine/TextureRect"]
+[node name="Label" type="Label" parent="Background/MarginContainer/PlayerStats/PointsMargin/Dopamine/TextureRect"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -162,18 +190,21 @@ offset_top = -12.0
 offset_right = 17.5
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 13
 text = "Dopamine"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Background/MarginContainer/PlayerStats/MarginContainer/Dopamine"]
+[node name="PanelContainer" type="PanelContainer" parent="Background/MarginContainer/PlayerStats/PointsMargin/Dopamine"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5ixxa")
 
-[node name="TotalAmi" type="Label" parent="Background/MarginContainer/PlayerStats/MarginContainer/Dopamine/PanelContainer"]
+[node name="TotalAmi" type="Label" parent="Background/MarginContainer/PlayerStats/PointsMargin/Dopamine/PanelContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

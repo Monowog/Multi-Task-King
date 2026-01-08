@@ -2,7 +2,7 @@ extends Control
 
 @export var player : PackedScene
 
-@onready var playerController = $"PlayspaceMargin/PlayerController"
+@onready var playerController = $"PlayspaceMargin/PlayerMargin/PlayerController"
 
 func _ready() -> void:
 	$"PlayspaceMargin/Buttons/Turn".text = "Turn " + str(GlobalData.curr_turn) + "/" + str(GlobalData.num_turns)

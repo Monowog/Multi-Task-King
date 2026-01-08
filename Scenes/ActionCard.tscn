@@ -51,7 +51,7 @@ expand_mode = 1
 
 [node name="CardStats" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 7
+theme_override_constants/separation = 4
 
 [node name="NameMargin" type="MarginContainer" parent="MarginContainer/CardStats"]
 layout_mode = 2
@@ -68,8 +68,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_x0nsa")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
-text = "Action Name"
+theme_override_font_sizes/font_size = 16
+text = "Check Notifications"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -87,7 +87,7 @@ expand_mode = 1
 [node name="Label" type="Label" parent="MarginContainer/CardStats/AdditionalText"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 14
 text = "Effect"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -104,7 +104,7 @@ size_flags_vertical = 8
 theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CardStats/StatMargin/Duration"]
-custom_minimum_size = Vector2(40, 35)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
 [node name="DurationTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
@@ -114,8 +114,8 @@ expand_mode = 1
 
 [node name="Time" type="Label" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 8
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 12
 text = "Time"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -129,6 +129,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wsbsm")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -140,7 +141,7 @@ size_flags_vertical = 8
 theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CardStats/StatMargin/Ami"]
-custom_minimum_size = Vector2(40, 35)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 
 [node name="AmiTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
@@ -151,7 +152,7 @@ expand_mode = 1
 [node name="Ami" type="Label" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "Ami"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -164,6 +165,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wsbsm")
 [node name="AmiText" type="Label" parent="MarginContainer/CardStats/StatMargin/Ami/PanelContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

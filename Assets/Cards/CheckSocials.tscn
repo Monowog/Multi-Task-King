@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://decnch8r4jw6q"]
+[gd_scene load_steps=10 format=3 uid="uid://dmbumf6bewrq8"]
 
-[ext_resource type="Script" uid="uid://bxw62y1kl03ch" path="res://Scripts/action_card.gd" id="1_h4ijs"]
-[ext_resource type="Texture2D" uid="uid://cltl0gjoa22g2" path="res://Assets/Images/Cards/BaseAct.png" id="2_0oji8"]
-[ext_resource type="Resource" uid="uid://byhw1dubkd1hf" path="res://Resources/Cards/ScrollShorts.tres" id="2_pfx8g"]
-[ext_resource type="Texture2D" uid="uid://qvadn60vyvbt" path="res://Assets/Images/UI/PNG/Default (128px)/knowledge.png" id="3_jxk2t"]
-[ext_resource type="Texture2D" uid="uid://bokdymj4a7rq0" path="res://Assets/Images/UI/PNG/Default (128px)/duration.png" id="4_x4s7q"]
-[ext_resource type="Texture2D" uid="uid://c14mitprcjbr6" path="res://Assets/Images/UI/PNG/Default (128px)/medium.png" id="5_chut1"]
+[ext_resource type="Script" uid="uid://bxw62y1kl03ch" path="res://Scripts/action_card.gd" id="1_l4xtk"]
+[ext_resource type="Texture2D" uid="uid://cltl0gjoa22g2" path="res://Assets/Images/Cards/BaseAct.png" id="2_5qtk1"]
+[ext_resource type="Resource" uid="uid://nk36aah3e0pu" path="res://Resources/Cards/CheckSocials.tres" id="2_i3c1k"]
+[ext_resource type="Texture2D" uid="uid://qvadn60vyvbt" path="res://Assets/Images/UI/PNG/Default (128px)/knowledge.png" id="3_u3wxa"]
+[ext_resource type="Texture2D" uid="uid://bokdymj4a7rq0" path="res://Assets/Images/UI/PNG/Default (128px)/duration.png" id="4_ho12p"]
+[ext_resource type="Texture2D" uid="uid://c14mitprcjbr6" path="res://Assets/Images/UI/PNG/Default (128px)/medium.png" id="5_04ce8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k57vs"]
 
@@ -33,8 +33,8 @@ corner_radius_bottom_left = 4
 [node name="ActionCard" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_h4ijs")
-card_data = ExtResource("2_pfx8g")
+script = ExtResource("1_l4xtk")
+card_data = ExtResource("2_i3c1k")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(140, 180)
@@ -48,7 +48,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_k57vs")
 
 [node name="BGTexture" type="TextureRect" parent="MarginContainer/Background"]
 layout_mode = 2
-texture = ExtResource("2_0oji8")
+texture = ExtResource("2_5qtk1")
 expand_mode = 1
 
 [node name="CardStats" type="VBoxContainer" parent="MarginContainer"]
@@ -70,8 +70,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_x0nsa")
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
-text = "Action Name"
+theme_override_font_sizes/font_size = 16
+text = "Check Notifications"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -83,13 +83,13 @@ size_flags_vertical = 4
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/CardStats/AdditionalText"]
 layout_mode = 2
-texture = ExtResource("3_jxk2t")
+texture = ExtResource("3_u3wxa")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="MarginContainer/CardStats/AdditionalText"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 14
 text = "Effect"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -111,13 +111,13 @@ layout_mode = 2
 
 [node name="DurationTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("4_x4s7q")
+texture = ExtResource("4_ho12p")
 expand_mode = 1
 
 [node name="Time" type="Label" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 8
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 10
 text = "Time"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -131,6 +131,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wsbsm")
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -147,13 +148,13 @@ layout_mode = 2
 
 [node name="AmiTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("5_chut1")
+texture = ExtResource("5_04ce8")
 expand_mode = 1
 
 [node name="Ami" type="Label" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 text = "Ami"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -166,6 +167,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wsbsm")
 [node name="AmiText" type="Label" parent="MarginContainer/CardStats/StatMargin/Ami/PanelContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

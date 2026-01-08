@@ -21,10 +21,10 @@ func _ready() -> void:
 
 func _on_click_box_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		SignalManager.clicked.emit(self)
+		SignalManager.action_clicked.emit(self)
 
 func _on_click_box_mouse_entered() -> void:
-	SignalManager.hovered.emit(self)
+	SignalManager.action_hovered.emit(self)
 
 func _on_click_box_mouse_exited() -> void:
-	SignalManager.unhovered.emit(self)
+	SignalManager.action_unhovered.emit(self)
