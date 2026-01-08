@@ -196,6 +196,8 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 0
 script = ExtResource("4_4thn0")
+defaultBackground = Color(0, 0, 0, 0.33333334)
+activeBackground = Color(0, 0.9480956, 0, 0.43529412)
 
 [node name="PlayerSlot1" type="PanelContainer" parent="PlayspaceMargin/PlayerSlots"]
 visible = false

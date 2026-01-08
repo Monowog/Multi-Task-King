@@ -1,12 +1,18 @@
 extends Node
 
-@warning_ignore("unused_signal")
+@warning_ignore_start("unused_signal")
+
+#Action Signals
 signal action_hovered(emitter: Node)
-@warning_ignore("unused_signal")
 signal action_unhovered(emitter: Node)
-@warning_ignore("unused_signal")
 signal action_clicked(emitter: Node, actionName: String)
-@warning_ignore("unused_signal")
+
+#(action) Highlight Signals
 signal highlight_slot(index: int)
-@warning_ignore("unused_signal")
 signal unhighlight_slot(index: int)
+
+#Player Signals
+signal update_players(activePlayer: int)
+
+#Game Signals
+signal end_turn()

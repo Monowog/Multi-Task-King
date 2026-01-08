@@ -29,6 +29,13 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 12
 
+[node name="Title" type="Label" parent="MarginContainer/Buttons"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Multi-Task King"
+horizontal_alignment = 1
+
 [node name="NewGame" type="Button" parent="MarginContainer/Buttons"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
