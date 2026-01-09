@@ -22,7 +22,7 @@ func _on_remove_button_pressed() -> void:
 		GlobalData.delete_player(self.get_index())
 		queue_free()
 	else:
-		print("Min Players Reached")
+		pass #Display a panel?
 
 func _on_name_input_text_changed(new_text: String) -> void:
 	GlobalData.player_names[self.get_index()] = new_text

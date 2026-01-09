@@ -201,13 +201,6 @@ custom_minimum_size = Vector2(280, 190)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_27fg1")
 
-[node name="DurationLabel" type="Label" parent="HandMargin/HandStats/StatsBackground"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="DurationStat" type="Label" parent="HandMargin/HandStats/StatsBackground"]
-layout_mode = 2
-
 [node name="PlayspaceMargin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15

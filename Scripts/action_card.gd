@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func _on_click_box_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		SignalManager.action_clicked.emit(self, cardName)
+		SignalManager.action_clicked.emit(self, cardName, duration, currDopamine)
 		queue_free()
 
 func _on_click_box_mouse_entered() -> void:

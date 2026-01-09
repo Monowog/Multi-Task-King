@@ -6,7 +6,7 @@ extends VBoxContainer
 @onready var playerSlots : Array[PanelContainer] 
 
 func _ready() -> void:
-	SignalManager.update_players.connect(_update_backgrounds)
+	SignalManager.update_player_slot.connect(_update_backgrounds)
 	playerSlots.append($PlayerSlot1)
 	playerSlots.append($PlayerSlot2)
 	playerSlots.append($PlayerSlot3)

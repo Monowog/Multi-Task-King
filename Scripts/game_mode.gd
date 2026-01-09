@@ -21,4 +21,4 @@ func _on_add_button_pressed() -> void:
 		GlobalData.add_player("New Player")
 		selectionContainer.add_child(playerInstance)
 	else:
-		print("Max Players Reached")
+		pass #Display a panel?

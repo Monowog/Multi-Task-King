@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtojdotmm2l52"]
+[gd_scene load_steps=4 format=3 uid="uid://dtojdotmm2l52"]
 
 [ext_resource type="Script" uid="uid://cfna438uphhr6" path="res://Scripts/game_mode.gd" id="1_0wnff"]
 [ext_resource type="PackedScene" uid="uid://bbruuaoq5mbfe" path="res://Scenes/PlayerSelect.tscn" id="2_ftnhc"]
+[ext_resource type="Texture2D" uid="uid://rytpuxxxsl1w" path="res://Assets/Images/Backgrounds/violet_pattern_background.jpg" id="3_d1vur"]
 
 [node name="GameMode" type="Control"]
 layout_mode = 3
@@ -12,6 +13,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0wnff")
 defaultPlayer = ExtResource("2_ftnhc")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_d1vur")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(160, 160)
