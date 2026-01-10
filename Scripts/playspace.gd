@@ -37,6 +37,7 @@ func _ready() -> void:
 		playerOrder.append(x)
 		playerAttentions.append(5)
 		playerScores.append(0)
+		SignalManager.update_attention.emit(x,5)
 	
 	for x in range(6): #draw 6 cards to start
 		SignalManager.draw_card.emit(draw_card())
@@ -65,6 +66,8 @@ func _on_next_button_pressed() -> void:
 	playerScores[playerOrder[activePlayer]] += currentDopamine
 	playerAttentions[playerOrder[activePlayer]] += 2 - cardsTaken
 	SignalManager.update_player.emit(activePlayer, playerScores[playerOrder[activePlayer]], playerAttentions[playerOrder[activePlayer]])
+	SignalManager.update_attention.emit(activePlayer, playerAttentions[playerOrder[activePlayer]])
+	print(str(activePlayer) + " " + str(playerAttentions[playerOrder[activePlayer]]))
 	
 	cardsTaken = 0
 	currentDopamine = 0

@@ -14,6 +14,7 @@ signal unhighlight_slot(index: int)
 #Player Signals
 signal update_player(activeIndex: int, newScore: int, newAttention: int)
 signal update_player_slot(activeIndex: int)
+signal update_attention(activeIndex: int, attention: int)
 
 #Game Signals
 signal draw_card(cardName: String)
