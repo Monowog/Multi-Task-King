@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn3fjq57hslbm"]
+
+[ext_resource type="Script" uid="uid://dj7lwn20yqghe" path="res://Scripts/Leaderboard.gd" id="1_xvobe"]
+[ext_resource type="Texture2D" uid="uid://bb6kl7pygyuva" path="res://Assets/Images/Backgrounds/dark_fractal_background.jpg" id="2_udga5"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xvobe")
+fontSizes = Array[int]([92, 60, 50, 40])
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_udga5")
+expand_mode = 1
+
+[node name="ScoresMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="Scores" type="VBoxContainer" parent="ScoresMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScoresMargin/Scores"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="LeaderboardText" type="Label" parent="ScoresMargin/Scores"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 120
+text = "Leaderboard"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ScoresMargin/Scores"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ButtonMargin" type="MarginContainer" parent="ScoresMargin"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Button" type="Button" parent="ScoresMargin/ButtonMargin"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Back to Main"
+
+[connection signal="pressed" from="ScoresMargin/ButtonMargin/Button" to="." method="_on_button_pressed"]

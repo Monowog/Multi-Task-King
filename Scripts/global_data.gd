@@ -25,6 +25,9 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
+var winners : Array[String]
+var winningScores : Array[int]
+
 var curr_turn = 1
 
 func _ready():

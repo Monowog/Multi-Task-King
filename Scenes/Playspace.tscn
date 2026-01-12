@@ -146,6 +146,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cmxdg")
+attentionColors = Array[Color]([Color(0.3254902, 0.3254902, 0.3254902, 0.47058824), Color(0.77254903, 0.101960786, 0, 0.6431373), Color(0, 0.44705883, 0, 0.47843137)])
 
 [node name="BackgroundMargin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -168,25 +169,25 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HandBackground" type="PanelContainer" parent="HandMargin"]
-custom_minimum_size = Vector2(1000, 200)
+custom_minimum_size = Vector2(1000, 240)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_loegc")
 
 [node name="HandSubmargin" type="MarginContainer" parent="HandMargin"]
-custom_minimum_size = Vector2(800, 200)
+custom_minimum_size = Vector2(960, 240)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 140
+theme_override_constants/margin_right = 160
 
 [node name="HandCards" type="HBoxContainer" parent="HandMargin/HandSubmargin"]
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
-theme_override_constants/separation = 150
+theme_override_constants/separation = 154
 alignment = 1
 
 [node name="HandStats" type="MarginContainer" parent="HandMargin"]
@@ -219,7 +220,7 @@ size_flags_vertical = 4
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
-text = "10/10"
+text = "0 / 5"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -236,7 +237,7 @@ mouse_filter = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 40
 
 [node name="PlayerSlots" type="VBoxContainer" parent="PlayspaceMargin"]
 custom_minimum_size = Vector2(160, 0)
@@ -286,7 +287,7 @@ theme_override_constants/separation = 20
 
 [node name="NextButton" type="Button" parent="PlayspaceMargin/PlayerMargin/PlayerController"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 39
 text = "Next Turn"
 
 [node name="Buttons" type="HBoxContainer" parent="PlayspaceMargin"]
@@ -325,74 +326,78 @@ theme_override_fonts/font = ExtResource("6_0syw4")
 theme_override_font_sizes/font_size = 28
 text = "How to Play"
 
-[node name="PlaymatMargin" type="MarginContainer" parent="PlayspaceMargin"]
-custom_minimum_size = Vector2(700, 450)
+[node name="PlayMargin" type="MarginContainer" parent="PlayspaceMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_bottom = 140
+
+[node name="PlaymatMargin" type="MarginContainer" parent="PlayspaceMargin/PlayMargin"]
+custom_minimum_size = Vector2(840, 535)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_bottom = 60
 
-[node name="Playmat" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin"]
+[node name="Playmat" type="PanelContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_iykop")
 
-[node name="ActionMargin" type="MarginContainer" parent="PlayspaceMargin/PlaymatMargin"]
+[node name="ActionMargin" type="MarginContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin"]
 layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 26
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 20
 
-[node name="ActionSlots" type="GridContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin"]
+[node name="ActionSlots" type="GridContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin"]
 layout_mode = 2
-theme_override_constants/h_separation = 60
-theme_override_constants/v_separation = 5
+theme_override_constants/h_separation = 72
+theme_override_constants/v_separation = 16
 columns = 3
 script = ExtResource("3_nl00j")
 defaultColor = Color(0, 0, 0, 0.43529412)
 highlightColor = Color(0.06666667, 0.78039217, 0.3019608, 0.36862746)
 
-[node name="Slot1" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
-custom_minimum_size = Vector2(160, 200)
+[node name="Slot1" type="PanelContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(180, 230)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nl00j")
 
-[node name="Slot2" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
-custom_minimum_size = Vector2(160, 200)
+[node name="Slot2" type="PanelContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(180, 230)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fmulb")
 
-[node name="Slot3" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
-custom_minimum_size = Vector2(160, 200)
+[node name="Slot3" type="PanelContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(180, 230)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xkknd")
 
-[node name="Slot4" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
-custom_minimum_size = Vector2(160, 200)
+[node name="Slot4" type="PanelContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(180, 230)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4thn0")
 
-[node name="Slot5" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
-custom_minimum_size = Vector2(160, 200)
+[node name="Slot5" type="PanelContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(180, 230)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0syw4")
 
-[node name="Slot6" type="PanelContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/ActionSlots"]
-custom_minimum_size = Vector2(160, 200)
+[node name="Slot6" type="PanelContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin/ActionSlots"]
+custom_minimum_size = Vector2(180, 230)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_b3cqc")
 
-[node name="MarginContainer" type="MarginContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin"]
+[node name="MarginContainer" type="MarginContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ActionOptions" type="GridContainer" parent="PlayspaceMargin/PlaymatMargin/ActionMargin/MarginContainer"]
+[node name="ActionOptions" type="GridContainer" parent="PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin/MarginContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 220
-theme_override_constants/v_separation = 204
+theme_override_constants/h_separation = 252
+theme_override_constants/v_separation = 246
 columns = 3
 script = ExtResource("3_ic3gb")
 
