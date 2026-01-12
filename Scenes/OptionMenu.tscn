@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0lw2ssw0i0fn"]
+[gd_scene load_steps=4 format=3 uid="uid://b0lw2ssw0i0fn"]
 
 [ext_resource type="Script" uid="uid://ckr5m5j60nnti" path="res://Scripts/option_menu.gd" id="1_5d174"]
+[ext_resource type="Texture2D" uid="uid://bb6kl7pygyuva" path="res://Assets/Images/Backgrounds/dark_fractal_background.jpg" id="2_rjnfi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rjnfi"]
+bg_color = Color(0.6, 0.6, 0.6, 0.5019608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.89492244, 0.89492244, 0.8949223, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="OptionMenu" type="Control"]
 layout_mode = 3
@@ -11,27 +25,92 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5d174")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rjnfi")
+expand_mode = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -54.0
-offset_top = -20.0
-offset_right = 54.0
-offset_bottom = 20.0
+offset_left = -200.0
+offset_top = -250.0
+offset_right = 200.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rjnfi")
+
+[node name="OptionContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="MusicContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/OptionContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/OptionContainer/MusicContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Music Volume   "
+
+[node name="MusicBar" type="HScrollBar" parent="MarginContainer/PanelContainer/OptionContainer/MusicContainer"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+
+[node name="SFXContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/OptionContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/OptionContainer/SFXContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SFX Volume      "
+vertical_alignment = 1
+
+[node name="SFXBar" type="HScrollBar" parent="MarginContainer/PanelContainer/OptionContainer/SFXContainer"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 50.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/OptionContainer"]
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="BackToMain" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BackToMain" type="Button" parent="MarginContainer/PanelContainer/OptionContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Back to Main
 "
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMain" to="." method="_on_quit_game_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/OptionContainer/MusicContainer/MusicBar" to="." method="_on_music_bar_value_changed"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/OptionContainer/SFXContainer/SFXBar" to="." method="_on_sfx_bar_value_changed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/OptionContainer/BackToMain" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/OptionContainer/BackToMain" to="." method="_on_back_to_main_pressed"]

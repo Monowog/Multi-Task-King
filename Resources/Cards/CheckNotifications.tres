@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://ld2wh2jfnomg"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_vg01u"]
+
+[resource]
+script = ExtResource("1_vg01u")
+cardName = "Check Notifications"
+baseDopamine = 1
+background = Color(0.41645688, 0.6016446, 0.670635, 1)
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

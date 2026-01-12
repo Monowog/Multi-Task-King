@@ -70,8 +70,9 @@ func draw_card() -> String:
 
 func _on_next_button_pressed() -> void:
 	if currentDuration > playerAttentions[playerOrder[activePlayer]]: #not enough attention
-		pass #Display text panel?
+		SignalManager.play_action_noise.emit(7)
 	else:
+		SignalManager.play_action_noise.emit(8)
 		attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[0]
 		
 		playerScores[playerOrder[activePlayer]] += currentDopamine #add points to total
@@ -114,8 +115,8 @@ func _on_next_button_pressed() -> void:
 
 
 func get_first_player() -> int:
-	var min = playerScores.min()
-	return playerScores.find(min) #returns value of playerOrder
+	var first = playerScores.min()
+	return playerScores.find(first) #returns value of playerOrder
 
 func _reorder_players(firstPlayer: int) -> void:
 	if firstPlayer == playerOrder[0]:
@@ -159,4 +160,4 @@ func _on_action_clicked(action: Node, actionName: String, duration: int, dopamin
 		var newCard = GlobalData.card_list[actionName].instantiate()
 		actionOptions.add_child(newCard)
 	
-	SignalManager.play_action_noise.emit(cardsTaken-1)
+	SignalManager.play_action_noise.emit(cardsTaken)

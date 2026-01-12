@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://b3myga4rtugew"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_pcbu5"]
+
+[resource]
+script = ExtResource("1_pcbu5")
+cardName = "See a Concert"
+duration = 7
+baseDopamine = 5
+background = Color(0.44833642, 0.12802437, 0.11454337, 1)
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

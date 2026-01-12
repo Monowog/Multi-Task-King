@@ -8,22 +8,26 @@ extends Node
 @export var sfx_list : Array[AudioStream]
 
 
-@export var card_list = {
+@export var card_list: Dictionary[String, PackedScene] = {
 	"Check Socials": preload("res://Assets/Cards/CheckSocials.tscn"),
 	"Scroll Shorts": preload("res://Assets/Cards/ScrollShorts.tscn"),
 	"Listen to Music": preload("res://Assets/Cards/ListenToMusic.tscn"),
 	"Take a Hike": preload("res://Assets/Cards/TakeAHike.tscn"),
 	"Watch a Film": preload("res://Assets/Cards/WatchAFilm.tscn"),
-	"Read a Book": preload("res://Assets/Cards/ReadABook.tscn")
+	"Read a Book": preload("res://Assets/Cards/ReadABook.tscn"),
+	"Check Notifications": preload("res://Assets/Cards/CheckNotifications.tscn"),
+	"See a Concert": preload("res://Assets/Cards/SeeAConcert.tscn")
 }
 
-@export var deck_dict = {
+@export var deck_dict: Dictionary[String, int] = {
 	"Check Socials": 10,
 	"Scroll Shorts": 8,
 	"Listen to Music": 8,
 	"Take a Hike": 6,
 	"Watch a Film": 6,
-	"Read a Book": 6
+	"Read a Book": 6,
+	"Check Notifications": 4,
+	"See a Concert": 4
 }
 
 @onready var music_player = $MusicPlayer

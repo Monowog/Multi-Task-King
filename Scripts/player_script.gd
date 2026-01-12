@@ -16,9 +16,9 @@ func _ready():
 	
 	for x in range(10): #set to new stylebox so instances don't share
 		attentionPanels.append(attentionBar.get_child(x))
-		var original_stylebox: StyleBoxFlat = attentionPanels[x].get_theme_stylebox("panel")
-		var new_stylebox: StyleBoxFlat = original_stylebox.duplicate()
-		attentionPanels[x].add_theme_stylebox_override("panel", new_stylebox)
+		var og_stylebox: StyleBoxFlat = attentionPanels[x].get_theme_stylebox("panel")
+		var n_stylebox: StyleBoxFlat = og_stylebox.duplicate()
+		attentionPanels[x].add_theme_stylebox_override("panel", n_stylebox)
 	
 	var original_stylebox: StyleBoxFlat = background.get_theme_stylebox("panel")
 	var new_stylebox: StyleBoxFlat = original_stylebox.duplicate()
