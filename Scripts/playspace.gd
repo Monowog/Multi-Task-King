@@ -158,3 +158,5 @@ func _on_action_clicked(action: Node, actionName: String, duration: int, dopamin
 		attentionText.text = str(currentDuration) + " / " + str(playerAttentions[playerOrder[activePlayer]])
 		var newCard = GlobalData.card_list[actionName].instantiate()
 		actionOptions.add_child(newCard)
+	
+	SignalManager.play_action_noise.emit(cardsTaken-1)

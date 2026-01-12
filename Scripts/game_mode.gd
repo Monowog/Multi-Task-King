@@ -3,6 +3,7 @@ extends Control
 @export var defaultPlayer : PackedScene
 
 @onready var selectionContainer = $"MarginContainer/PlayerContainer/SelectionContainer"
+@onready var turnText = $"MarginContainer/VBoxContainer/PanelContainer/TurnContainer/TurnText"
 
 func _ready() -> void:
 	for x in range(GlobalData.num_players):
@@ -22,3 +23,7 @@ func _on_add_button_pressed() -> void:
 		selectionContainer.add_child(playerInstance)
 	else:
 		pass #Display a panel?
+
+func _on_h_slider_value_changed(value: float) -> void:
+	GlobalData.num_turns = int(value)
+	turnText.text = "Turns: " + str(GlobalData.num_turns) + " "

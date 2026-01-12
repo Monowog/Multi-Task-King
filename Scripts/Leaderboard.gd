@@ -9,7 +9,7 @@ extends Control
 func _ready() -> void:
 	for x in range(GlobalData.num_players):
 		var newLabel = scoreText.duplicate()
-		newLabel.text = str(x) + ": " + GlobalData.winners[x] + " with " + str(GlobalData.winningScores[x]) + " ami"
+		newLabel.text = str(x+1) + ") " + GlobalData.winners[x] + " with " + str(GlobalData.winningScores[x]) + " ami"
 		newLabel.add_theme_font_size_override("font_size", fontSizes[x])
 		scoreboard.add_child(newLabel)
 

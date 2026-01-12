@@ -22,3 +22,6 @@ signal card_taken(duration: int, baseDopamine: int)
 signal card_put_back(duration: int, baseDopamine: int)
 signal reorder_players(startIndex: int)
 signal end_turn()
+
+#Audio Signals
+signal play_action_noise(index: int)

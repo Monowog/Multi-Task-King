@@ -5,6 +5,9 @@ extends Node
 @export var player_names = ["Player1","Player2","Player3","Player4"]
 @export var player_colors : Array[Color]
 
+@export var sfx_list : Array[AudioStream]
+
+
 @export var card_list = {
 	"Check Socials": preload("res://Assets/Cards/CheckSocials.tscn"),
 	"Scroll Shorts": preload("res://Assets/Cards/ScrollShorts.tscn"),
@@ -23,6 +26,9 @@ extends Node
 	"Read a Book": 6
 }
 
+@onready var music_player = $MusicPlayer
+@onready var sfx_player = $SFXPlayer
+
 var rng = RandomNumberGenerator.new()
 
 var winners : Array[String]
@@ -31,7 +37,14 @@ var winningScores : Array[int]
 var curr_turn = 1
 
 func _ready():
+	SignalManager.play_action_noise.connect(_play_action_noise)
 	rng.randomize()
+	music_player.play()
+	
+func _play_action_noise(index: int):
+	
+	sfx_player.stream = sfx_list[index]
+	sfx_player.play()
 	
 func delete_player(index : int) -> void:
 	num_players -= 1

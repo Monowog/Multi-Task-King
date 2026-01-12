@@ -1,7 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfrtpbt5sjw6l"]
+[gd_scene load_steps=9 format=3 uid="uid://bfrtpbt5sjw6l"]
 
 [ext_resource type="Script" uid="uid://cai3t3ow7sp40" path="res://Scripts/global_data.gd" id="1_gqdbo"]
+[ext_resource type="AudioStream" uid="uid://c0jv7b23ff5gj" path="res://Assets/Sounds/Music/BoopMusic.mp3" id="2_6nxoj"]
+[ext_resource type="AudioStream" uid="uid://bwr44142dct2t" path="res://Assets/Sounds/Effects/Act1.mp3" id="2_55qoo"]
+[ext_resource type="AudioStream" uid="uid://d13dbv4m71eym" path="res://Assets/Sounds/Effects/Act2.mp3" id="3_1dqeo"]
+[ext_resource type="AudioStream" uid="uid://c0n7suvj6ryps" path="res://Assets/Sounds/Effects/Act3.mp3" id="4_rxlfs"]
+[ext_resource type="AudioStream" uid="uid://bnp3vj3tnfrer" path="res://Assets/Sounds/Effects/Act4.mp3" id="5_mprxd"]
+[ext_resource type="AudioStream" uid="uid://bdyuvjkhq08wb" path="res://Assets/Sounds/Effects/Act5.mp3" id="6_jwq43"]
+[ext_resource type="AudioStream" uid="uid://oyaqwyu1cv54" path="res://Assets/Sounds/Effects/Act6.mp3" id="7_ydmvo"]
 
 [node name="GlobalData" type="Node"]
 script = ExtResource("1_gqdbo")
 player_colors = Array[Color]([Color(0.4117647, 0.4117647, 0.4117647, 1), Color(0.4117647, 0.4117647, 0.4117647, 1), Color(0.4117647, 0.4117647, 0.4117647, 1), Color(0.4117647, 0.4117647, 0.4117647, 1)])
+sfx_list = Array[AudioStream]([ExtResource("2_55qoo"), ExtResource("3_1dqeo"), ExtResource("4_rxlfs"), ExtResource("5_mprxd"), ExtResource("6_jwq43"), ExtResource("7_ydmvo")])
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6nxoj")
+bus = &"Music"
+parameters/looping = true
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
