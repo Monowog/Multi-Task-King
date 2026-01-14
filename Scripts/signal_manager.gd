@@ -7,6 +7,10 @@ signal action_hovered(emitter: Node)
 signal action_unhovered(emitter: Node)
 signal action_clicked(emitter: Node, actionName: String, duration: int, dopamine: int)
 
+#UI Signals
+signal show_tooltip(name: String, effect: String, bg_color: Color, isAction: bool, duration: int, dopamine: int)
+signal hide_tooltip()
+
 #(action) Highlight Signals
 signal highlight_slot(index: int)
 signal unhighlight_slot(index: int)

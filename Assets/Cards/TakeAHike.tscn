@@ -37,6 +37,8 @@ anchors_preset = 0
 script = ExtResource("1_x0coj")
 card_data = ExtResource("2_x0coj")
 
+[node name="Take a Hike" type="Node" parent="."]
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(168, 216)
 layout_mode = 0

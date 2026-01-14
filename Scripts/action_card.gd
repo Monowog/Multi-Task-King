@@ -21,11 +21,18 @@ func _ready() -> void:
 
 func _on_click_box_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		SignalManager.action_clicked.emit(self, cardName, duration, currDopamine)
-		queue_free()
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			SignalManager.action_clicked.emit(self, cardName, duration, currDopamine)
+			queue_free()
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			SignalManager.show_tooltip.emit(cardName, effectText, background, true, duration, baseDopamine)
 
 func _on_click_box_mouse_entered() -> void:
 	SignalManager.action_hovered.emit(self)
 
 func _on_click_box_mouse_exited() -> void:
+	SignalManager.hide_tooltip.emit()
 	SignalManager.action_unhovered.emit(self)
+
+func _update_action_stats(dopamine: int) -> void:
+	pass

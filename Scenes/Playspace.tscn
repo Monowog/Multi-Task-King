@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b3v1hrakawu75"]
+[gd_scene load_steps=27 format=3 uid="uid://b3v1hrakawu75"]
 
 [ext_resource type="Script" uid="uid://ci7qmb70v24bk" path="res://Scripts/playspace.gd" id="1_cmxdg"]
 [ext_resource type="Script" uid="uid://cru3ua1g2hgah" path="res://Scripts/action_controller.gd" id="3_ic3gb"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dosg8425blq12" path="res://Assets/Images/Backgrounds/Background.jpg" id="3_xkknd"]
 [ext_resource type="Script" uid="uid://be1c1ca8qdmp1" path="res://Scripts/player_slots.gd" id="4_4thn0"]
 [ext_resource type="FontFile" uid="uid://nauudocebh0y" path="res://Assets/Fonts/Unitblock-JpJma.ttf" id="6_0syw4"]
+[ext_resource type="Texture2D" uid="uid://cltl0gjoa22g2" path="res://Assets/Images/Cards/BaseAct.png" id="7_xkknd"]
+[ext_resource type="Texture2D" uid="uid://cbiea1vynx8pd" path="res://Assets/Images/UI/PNG/Default (256px)/duration.png" id="8_0syw4"]
+[ext_resource type="Texture2D" uid="uid://cqifdkwpsb5wt" path="res://Assets/Images/UI/PNG/Default (256px)/medium.png" id="9_b3cqc"]
 [ext_resource type="Texture2D" uid="uid://32apsbw6w5p6" path="res://Assets/Images/UI/Help.png" id="9_xkknd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loegc"]
@@ -137,6 +140,16 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_304f8"]
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 6
+border_color = Color(0.15686275, 0.19215687, 0.19215687, 1)
+border_blend = true
+corner_radius_top_left = 70
+corner_radius_top_right = 70
 
 [node name="Playspace" type="Control"]
 layout_mode = 3
@@ -400,6 +413,138 @@ theme_override_constants/h_separation = 252
 theme_override_constants/v_separation = 246
 columns = 3
 script = ExtResource("3_ic3gb")
+
+[node name="TooltipContainer" type="VBoxContainer" parent="PlayspaceMargin"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="TooltipMargin" type="MarginContainer" parent="PlayspaceMargin/TooltipContainer"]
+custom_minimum_size = Vector2(360, 500)
+layout_mode = 2
+
+[node name="TooltipBackground" type="TextureRect" parent="PlayspaceMargin/TooltipContainer/TooltipMargin"]
+layout_mode = 2
+texture = ExtResource("7_xkknd")
+expand_mode = 1
+
+[node name="NameColorRect" type="PanelContainer" parent="PlayspaceMargin/TooltipContainer/TooltipMargin"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_304f8")
+
+[node name="NameText" type="Label" parent="PlayspaceMargin/TooltipContainer/TooltipMargin/NameColorRect"]
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_font_sizes/font_size = 36
+text = "Check Notifications"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EffectText" type="Label" parent="PlayspaceMargin/TooltipContainer/TooltipMargin"]
+custom_minimum_size = Vector2(320, 360)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "According to all known laws of aviation, bees should not be capable of flight"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StatContainer" type="MarginContainer" parent="PlayspaceMargin/TooltipContainer/TooltipMargin"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="AmiVBox" type="VBoxContainer" parent="PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="IconLabel" type="Label" parent="PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer/AmiVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Dopamine"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="DopamineIcon" type="TextureRect" parent="PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer/AmiVBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("9_b3cqc")
+expand_mode = 1
+
+[node name="DopamineText" type="Label" parent="PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer/AmiVBox/DopamineIcon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -33.22917
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 29
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DuraVbox" type="VBoxContainer" parent="PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="IconLabel" type="Label" parent="PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer/DuraVbox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "Duration"
+horizontal_alignment = 1
+
+[node name="DurationIcon" type="TextureRect" parent="PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer/DuraVbox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("8_0syw4")
+expand_mode = 1
+
+[node name="DurationText" type="Label" parent="PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer/DuraVbox/DurationIcon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 29
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="MarginContainer" parent="PlayspaceMargin/TooltipContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+mouse_filter = 2
 
 [node name="HelpPanel" type="PanelContainer" parent="PlayspaceMargin"]
 visible = false

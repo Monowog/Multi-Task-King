@@ -37,6 +37,8 @@ anchors_preset = 0
 script = ExtResource("1_t5lrj")
 card_data = ExtResource("2_t5lrj")
 
+[node name="Check Notifications" type="Node" parent="."]
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(168, 216)
 layout_mode = 0

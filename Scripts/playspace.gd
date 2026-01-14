@@ -6,8 +6,19 @@ const PLAYER_SCENE = preload("res://Scenes/Player.tscn")
 @onready var actionOptions = $"PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin/MarginContainer/ActionOptions"
 @onready var hand = $"HandMargin/HandSubmargin/HandCards"
 @onready var turnText = $"PlayspaceMargin/Buttons/TurnPanel/Turn"
+
+#attention
 @onready var attentionText = $"HandMargin/HandStats/StatsBackground/MarginContainer/DurationStats"
 @onready var attentionPanel = $"HandMargin/HandStats/StatsBackground"
+
+#tooltip
+@onready var tooltip = $"PlayspaceMargin/TooltipContainer"
+@onready var tooltipStats = $"PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer"
+@onready var tooltipBackground = $"PlayspaceMargin/TooltipContainer/TooltipMargin/NameColorRect"
+@onready var tooltipName = $"PlayspaceMargin/TooltipContainer/TooltipMargin/NameColorRect/NameText"
+@onready var tooltipEffect = $"PlayspaceMargin/TooltipContainer/TooltipMargin/EffectText"
+@onready var tooltipDuration =$"PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer/DuraVbox/DurationIcon/DurationText"
+@onready var tooltipDopamine =$"PlayspaceMargin/TooltipContainer/TooltipMargin/StatContainer/AmiVBox/DopamineIcon/DopamineText"
 
 var currTurn : int = 1
 var activePlayer : int = 0 #index of playerOrder
@@ -27,6 +38,8 @@ var cardsTaken : int = 0
 func _ready() -> void:
 	SignalManager.action_clicked.connect(_on_action_clicked)
 	SignalManager.reorder_players.connect(_reorder_players)
+	SignalManager.show_tooltip.connect(_show_tooltip)
+	SignalManager.hide_tooltip.connect(_hide_tooltip)
 	
 	for cardName in GlobalData.deck_dict: #for each card type
 		for x in range(GlobalData.deck_dict[cardName]): #add x cards of that type to deck
@@ -86,7 +99,7 @@ func _on_next_button_pressed() -> void:
 		SignalManager.update_player.emit(activePlayer, playerScores[playerOrder[activePlayer]], playerAttentions[playerOrder[activePlayer]])
 		SignalManager.update_attention.emit(activePlayer, playerAttentions[playerOrder[activePlayer]])
 		
-		cardsTaken = 0
+		cardsTaken = 0 #Reset player variables
 		currentDuration = 0
 		currentDopamine = 0
 		
@@ -161,3 +174,18 @@ func _on_action_clicked(action: Node, actionName: String, duration: int, dopamin
 		actionOptions.add_child(newCard)
 	
 	SignalManager.play_action_noise.emit(cardsTaken)
+
+func _show_tooltip(cardName: String, effect: String, background: Color, isAction: bool, duration: int, baseDopamine: int):
+	tooltipName.text = cardName
+	tooltipBackground.get_theme_stylebox("panel").bg_color = background
+	tooltipEffect.text = effect
+	
+	if not isAction:
+		tooltipStats.visible = false
+	else:
+		tooltipDuration.text = str(duration)
+		tooltipDopamine.text = str(baseDopamine)
+	tooltip.visible = true
+
+func _hide_tooltip():
+	tooltip.visible = false

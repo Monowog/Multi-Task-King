@@ -33,3 +33,7 @@ window/stretch/mode="canvas_items"
 fonts/dynamic_fonts/use_oversampling=false
 theme/default_font_multichannel_signed_distance_field=true
 theme/custom_font="uid://nauudocebh0y"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
