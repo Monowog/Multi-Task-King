@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn3fjq57hslbm"]
+[gd_scene load_steps=4 format=3 uid="uid://cn3fjq57hslbm"]
 
 [ext_resource type="Script" uid="uid://dj7lwn20yqghe" path="res://Scripts/Leaderboard.gd" id="1_xvobe"]
 [ext_resource type="Texture2D" uid="uid://bb6kl7pygyuva" path="res://Assets/Images/Backgrounds/dark_fractal_background.jpg" id="2_udga5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_udga5"]
+bg_color = Color(0.11858138, 0.11858138, 0.11858138, 0.7372549)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
@@ -44,11 +56,19 @@ layout_mode = 2
 [node name="LeaderboardText" type="Label" parent="ScoresMargin/Scores"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
-text = "Leaderboard"
+text = "Scoreboard"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ScoresMargin/Scores"]
 custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScorePanel" type="PanelContainer" parent="ScoresMargin/Scores"]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_udga5")
+
+[node name="ScoreVBox" type="VBoxContainer" parent="ScoresMargin/Scores/ScorePanel"]
 layout_mode = 2
 
 [node name="ButtonMargin" type="MarginContainer" parent="ScoresMargin"]

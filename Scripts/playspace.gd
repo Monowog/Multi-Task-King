@@ -7,6 +7,10 @@ const PLAYER_SCENE = preload("res://Scenes/Player.tscn")
 @onready var hand = $"HandMargin/HandSubmargin/HandCards"
 @onready var turnText = $"PlayspaceMargin/Buttons/TurnPanel/Turn"
 
+#turn text box
+@onready var playerTurnPanel = $"PlayspaceMargin/PlayMargin/TurnTextContainer/TurnTextPanel"
+@onready var playerTurnText = $"PlayspaceMargin/PlayMargin/TurnTextContainer/TurnTextPanel/TurnText"
+
 #attention
 @onready var attentionText = $"HandMargin/HandStats/StatsBackground/MarginContainer/DurationStats"
 @onready var attentionPanel = $"HandMargin/HandStats/StatsBackground"
@@ -60,6 +64,7 @@ func _ready() -> void:
 		SignalManager.draw_card.emit(draw_card())
 	
 	attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[0]
+	update_player_turn_text(GlobalData.player_names[0], GlobalData.player_colors[0])
 
 func swap_cards(index1 : int, index2 : int):
 	var temp = deckList[index1]
@@ -110,6 +115,7 @@ func _on_next_button_pressed() -> void:
 			for x in range(GlobalData.num_players):
 				GlobalData.winningScores.append(playerScores.max())
 				GlobalData.winners.append( GlobalData.player_names[playerScores.find(playerScores.max())] )
+				GlobalData.winningColors.append( GlobalData.player_colors[playerScores.find(playerScores.max())] )
 				playerScores[playerScores.find(playerScores.max())] -= 10000
 			SceneManager.change_scene_to("res://Scenes/Leaderboard.tscn")
 		else: #end turn, go to next turn
@@ -124,6 +130,7 @@ func _on_next_button_pressed() -> void:
 			discard.append(card.get_child(0).name)
 			card.queue_free()
 		
+		update_player_turn_text(GlobalData.player_names[playerOrder[activePlayer]], GlobalData.player_colors[playerOrder[activePlayer]])
 		attentionText.text = str(currentDuration) + " / " + str(playerAttentions[playerOrder[activePlayer]])
 
 
@@ -148,7 +155,7 @@ func _on_how_to_play_pressed() -> void:
 	$"PlayspaceMargin/HelpPanel".visible = true
 
 func _on_action_clicked(action: Node, actionName: String, duration: int, dopamine: int):
-	if action.get_parent().name == "ActionOptions":
+	if action.get_parent().name == "ActionOptions": #add to hand
 		cardsTaken += 1
 		currentDopamine += dopamine
 		currentDuration += duration
@@ -160,7 +167,7 @@ func _on_action_clicked(action: Node, actionName: String, duration: int, dopamin
 		attentionText.text = str(currentDuration) + " / " + str(playerAttentions[playerOrder[activePlayer]])
 		var newCard = GlobalData.card_list[actionName].instantiate()
 		hand.add_child(newCard)
-	elif action.get_parent().name == "HandCards":
+	elif action.get_parent().name == "HandCards": #add to action options
 		cardsTaken -= 1
 		currentDopamine -= dopamine
 		currentDuration -= duration
@@ -189,3 +196,7 @@ func _show_tooltip(cardName: String, effect: String, background: Color, isAction
 
 func _hide_tooltip():
 	tooltip.visible = false
+	
+func update_player_turn_text(playerName: String, playerColor: Color):
+	playerTurnPanel.get_theme_stylebox("panel").bg_color = playerColor
+	playerTurnText.text = playerName + "'s Turn"
