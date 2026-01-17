@@ -16,7 +16,11 @@ extends Node
 	"Watch a Film": preload("res://Assets/Cards/WatchAFilm.tscn"),
 	"Read a Book": preload("res://Assets/Cards/ReadABook.tscn"),
 	"Check Notifications": preload("res://Assets/Cards/CheckNotifications.tscn"),
-	"See a Concert": preload("res://Assets/Cards/SeeAConcert.tscn")
+	"See a Concert": preload("res://Assets/Cards/SeeAConcert.tscn"),
+	"Smoke Up": preload("res://Assets/Cards/SmokeUp.tscn"),
+	"Read a Comic": preload("res://Assets/Cards/ReadAComic.tscn"),
+	"Daydream": preload("res://Assets/Cards/Daydream.tscn"),
+	"Get a Massage": preload("res://Assets/Cards/GetAMassage.tscn")
 }
 
 @export var deck_dict: Dictionary[String, int] = {
@@ -27,7 +31,11 @@ extends Node
 	"Watch a Film": 6,
 	"Read a Book": 6,
 	"Check Notifications": 4,
-	"See a Concert": 4
+	"See a Concert": 4,
+	"Smoke Up": 6,
+	"Read a Comic": 4,
+	"Daydream": 6,
+	"Get a Massage": 4
 }
 
 @onready var music_player = $MusicPlayer

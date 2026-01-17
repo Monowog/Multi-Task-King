@@ -431,6 +431,7 @@ script = ExtResource("3_ic3gb")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+mouse_filter = 2
 
 [node name="Spacer" type="MarginContainer" parent="PlayspaceMargin/PlayMargin/TurnTextContainer"]
 custom_minimum_size = Vector2(300, 0)
@@ -493,7 +494,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 33
 text = "According to all known laws of aviation, bees should not be capable of flight"
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -598,6 +599,11 @@ script = ExtResource("3_iykop")
 layout_mode = 2
 texture = ExtResource("9_xkknd")
 expand_mode = 1
+
+[node name="TrashCan" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="PlayspaceMargin/PlayerMargin/PlayerController/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="PlayspaceMargin/Buttons/BackButton" to="." method="_on_back_button_pressed"]

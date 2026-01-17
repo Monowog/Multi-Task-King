@@ -93,7 +93,7 @@ func _on_next_button_pressed() -> void:
 		SignalManager.play_action_noise.emit(8)
 		attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[0]
 		
-		playerScores[playerOrder[activePlayer]] += currentDopamine #add points to total
+		playerScores[playerOrder[activePlayer]] += get_total_dopamine() #add points to total
 		if cardsTaken == 0 && playerAttentions[playerOrder[activePlayer]] <= 4: #bonus for skipping turn with low attn
 			playerAttentions[playerOrder[activePlayer]] += 3
 		else:
@@ -157,7 +157,6 @@ func _on_how_to_play_pressed() -> void:
 func _on_action_clicked(action: Node, actionName: String, duration: int, dopamine: int):
 	if action.get_parent().name == "ActionOptions": #add to hand
 		cardsTaken += 1
-		currentDopamine += dopamine
 		currentDuration += duration
 		
 		if currentDuration > playerAttentions[playerOrder[activePlayer]]:
@@ -165,11 +164,12 @@ func _on_action_clicked(action: Node, actionName: String, duration: int, dopamin
 		elif currentDuration == playerAttentions[playerOrder[activePlayer]]:
 			attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[2]
 		attentionText.text = str(currentDuration) + " / " + str(playerAttentions[playerOrder[activePlayer]])
+		
 		var newCard = GlobalData.card_list[actionName].instantiate()
 		hand.add_child(newCard)
+		
 	elif action.get_parent().name == "HandCards": #add to action options
 		cardsTaken -= 1
-		currentDopamine -= dopamine
 		currentDuration -= duration
 		
 		if currentDuration < playerAttentions[playerOrder[activePlayer]]:
@@ -180,6 +180,7 @@ func _on_action_clicked(action: Node, actionName: String, duration: int, dopamin
 		var newCard = GlobalData.card_list[actionName].instantiate()
 		actionOptions.add_child(newCard)
 	
+	update_actions()
 	SignalManager.play_action_noise.emit(cardsTaken)
 
 func _show_tooltip(cardName: String, effect: String, background: Color, isAction: bool, duration: int, baseDopamine: int):
@@ -200,3 +201,39 @@ func _hide_tooltip():
 func update_player_turn_text(playerName: String, playerColor: Color):
 	playerTurnPanel.get_theme_stylebox("panel").bg_color = playerColor
 	playerTurnText.text = playerName + "'s Turn"
+
+func update_actions():
+	for card in hand.get_children(): #reset values
+		card.currDopamine = card.card_data.baseDopamine
+	
+	for card in hand.get_children(): #apply dopamine modifiers
+		match card.cardName:
+			"Smoke Up":
+				card.currDopamine += cardsTaken-1
+			"Read a Comic":
+				if activePlayer == 0:
+					card.currDopamine += 2
+			"Daydream":
+				var mod = -1
+				for c in hand.get_children():
+					if c.duration <= 3 && c.duration != -1:
+						mod += 1
+				card.currDopamine += mod
+			_:
+				pass
+	
+	for card in hand.get_children(): #apply multipliers
+		match card.cardName:
+			"Get a Massage":
+				for c in hand.get_children():
+					c.currDopamine *= 2
+			_:
+				pass
+	
+	SignalManager.update_action_stats.emit()
+
+func get_total_dopamine() -> int:
+	currentDopamine = 0
+	for card in hand.get_children():
+		currentDopamine += card.currDopamine
+	return currentDopamine

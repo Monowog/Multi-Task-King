@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://dnqr0onaipr1p"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_drsip"]
+
+[resource]
+script = ExtResource("1_drsip")
+cardName = "Daydream"
+duration = 2
+baseDopamine = 1
+background = Color(0.7708395, 0.77083945, 0.77083945, 1)
+hasModifier = true
+hasEffect = true
+effectText = "This action gets +1 dopamine for each other action with duration 3 or less taken this turn"
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

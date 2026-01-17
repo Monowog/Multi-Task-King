@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://d2ojm1drnumy6"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_f2lsu"]
+
+[resource]
+script = ExtResource("1_f2lsu")
+cardName = "Get a Massage"
+duration = 4
+baseDopamine = 1
+background = Color(0.6760061, 0.3015033, 0.08302828, 1)
+hasMultiplier = true
+multiplier = 2
+hasEffect = true
+effectText = "This action doubles the dopamine of every action you take this turn"
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

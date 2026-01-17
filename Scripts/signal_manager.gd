@@ -6,6 +6,7 @@ extends Node
 signal action_hovered(emitter: Node)
 signal action_unhovered(emitter: Node)
 signal action_clicked(emitter: Node, actionName: String, duration: int, dopamine: int)
+signal update_action_stats()
 
 #UI Signals
 signal show_tooltip(name: String, effect: String, bg_color: Color, isAction: bool, duration: int, dopamine: int)

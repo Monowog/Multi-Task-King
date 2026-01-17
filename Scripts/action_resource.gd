@@ -7,5 +7,6 @@ class_name action_resource
 @export var background : Color
 @export var hasModifier : bool
 @export var hasMultiplier : bool
+@export var multiplier : int
 @export var hasEffect : bool
 @export var effectText : String

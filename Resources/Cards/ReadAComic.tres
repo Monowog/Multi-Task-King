@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://dba3dohqks7vl"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_72yiq"]
+
+[resource]
+script = ExtResource("1_72yiq")
+cardName = "Read a Comic"
+duration = 2
+baseDopamine = 1
+background = Color(0.59898293, 0.7476021, 0.9218299, 1)
+hasModifier = true
+hasEffect = true
+effectText = "This action gets +2 dopamine if you are first to act this turn"
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://bvja0jk55ahty"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_k4xl2"]
+
+[resource]
+script = ExtResource("1_k4xl2")
+cardName = "Smoke Up"
+duration = 3
+baseDopamine = 1
+background = Color(0.2619853, 0.85976267, 0.31677225, 1)
+hasModifier = true
+modifier = 1
+hasEffect = true
+effectText = "This action gets +1 dopamine for each other action you take this turn"
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"
