@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cltl0gjoa22g2" path="res://Assets/Images/Cards/BaseAct.png" id="7_xkknd"]
 [ext_resource type="Texture2D" uid="uid://cbiea1vynx8pd" path="res://Assets/Images/UI/PNG/Default (256px)/duration.png" id="8_0syw4"]
 [ext_resource type="Texture2D" uid="uid://cqifdkwpsb5wt" path="res://Assets/Images/UI/PNG/Default (256px)/medium.png" id="9_b3cqc"]
-[ext_resource type="Texture2D" uid="uid://32apsbw6w5p6" path="res://Assets/Images/UI/Help.png" id="9_xkknd"]
+[ext_resource type="Texture2D" uid="uid://b8ynu5l6u565b" path="res://Assets/Images/UI/HelpPanel.png" id="11_0syw4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loegc"]
 bg_color = Color(0.6, 0.6, 0.6, 0.5568628)
@@ -590,7 +590,7 @@ mouse_filter = 2
 
 [node name="HelpPanel" type="PanelContainer" parent="PlayspaceMargin"]
 visible = false
-custom_minimum_size = Vector2(1200, 600)
+custom_minimum_size = Vector2(1200, 700)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -598,7 +598,7 @@ script = ExtResource("3_iykop")
 
 [node name="HelpTexture" type="TextureRect" parent="PlayspaceMargin/HelpPanel"]
 layout_mode = 2
-texture = ExtResource("9_xkknd")
+texture = ExtResource("11_0syw4")
 expand_mode = 1
 
 [connection signal="pressed" from="PlayspaceMargin/PlayerMargin/PlayerController/NextButton" to="." method="_on_next_button_pressed"]
