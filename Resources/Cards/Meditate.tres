@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://1draniqqg215"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_n0sj3"]
+
+[resource]
+script = ExtResource("1_n0sj3")
+cardName = "Meditate"
+duration = 5
+baseDopamine = 1
+background = Color(0.79249996, 0.7527536, 0.44014668, 1)
+hasEffect = true
+effectText = "Gives an additional +2 attention after being chosen"
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

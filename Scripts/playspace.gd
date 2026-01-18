@@ -111,8 +111,18 @@ func next_player():
 		else:
 			playerAttentions[playerOrder[activePlayer]] += 2 - cardsTaken
 		
-		if playerAttentions[playerOrder[activePlayer]] > 10:
-			playerAttentions[playerOrder[activePlayer]] = 10 #set max attention
+		for card in hand.get_children():
+			if card.card_data.cardName == "Meditate":
+				playerAttentions[playerOrder[activePlayer]] += 2
+			elif card.card_data.cardName == "Gamble Online" or card.card_data.cardName == "Eat Fast Food" or card.card_data.cardName == "Get Wasted":
+				playerAttentions[playerOrder[activePlayer]] -= 1
+			elif card.card_data.cardName == "Binge Watch Shows":
+				playerAttentions[playerOrder[activePlayer]] -= 2
+		
+		if playerAttentions[playerOrder[activePlayer]] > 10: #set attention bounds
+			playerAttentions[playerOrder[activePlayer]] = 10 
+		elif playerAttentions[playerOrder[activePlayer]] < 0:
+			playerAttentions[playerOrder[activePlayer]] = 0
 		SignalManager.update_player.emit(activePlayer, playerScores[playerOrder[activePlayer]], playerAttentions[playerOrder[activePlayer]])
 		SignalManager.update_attention.emit(activePlayer, playerAttentions[playerOrder[activePlayer]])
 		
@@ -251,6 +261,9 @@ func update_actions():
 			"Get a Massage":
 				for c in hand.get_children():
 					c.currDopamine *= 2
+			"Get Wasted":
+				for c in hand.get_children():
+					c.currDopamine *= 3
 			_:
 				pass
 	
@@ -269,7 +282,7 @@ func computer_turn() -> void:
 	
 	var playstyle : String
 	
-	if GlobalData.num_turns - currTurn < 2:
+	if GlobalData.num_turns - currTurn < 2 or playerAttentions[playerOrder[activePlayer]] > 8:
 		playstyle = "aggressive"
 	elif playerAttentions[playerOrder[activePlayer]] < 5:
 		playstyle = "passTurn"
@@ -297,14 +310,14 @@ func find_choices(playstyle: String) -> Array[String]:
 	var choices: Array[String] = []
 	match playstyle:
 		"aggressive":
-			var max = 0
+			var maxAmi = 0
 			for subset in get_all_subsets([0,1,2,3,4,5]):
-				if max < evaluate(subset):
-					max = evaluate(subset)
+				if maxAmi < evaluate(subset):
+					maxAmi = evaluate(subset)
 					choices.clear()
 					for x in subset:
 						choices.append(actionOptions.get_child(x).cardName)
-				elif max == evaluate(subset) && subset.size() < choices.size():
+				elif maxAmi == evaluate(subset) && subset.size() < choices.size():
 					choices.clear()
 					for x in subset:
 						choices.append(actionOptions.get_child(x).cardName)
@@ -353,6 +366,8 @@ func evaluate(subset: Array) -> int:
 		match actionOptions.get_child(x).cardName:
 			"Get a Massage":
 				totalDopamine *= 2
+			"Get Wasted":
+				totalDopamine *= 3
 			_:
 				pass
 				

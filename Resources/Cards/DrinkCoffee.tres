@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://8weni8w3flc2"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_3ipkh"]
+
+[resource]
+script = ExtResource("1_3ipkh")
+cardName = "Drink Coffee"
+duration = -2
+background = Color(0.39940017, 0.21959874, 0.023674794, 1)
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

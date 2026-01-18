@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://br4rxdpadxdrh"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_lvyxm"]
+
+[resource]
+script = ExtResource("1_lvyxm")
+cardName = "Get Wasted"
+duration = 6
+baseDopamine = 1
+background = Color(0.4614405, 0.3576584, 0.4883765, 1)
+hasMultiplier = true
+multiplier = 3
+hasEffect = true
+effectText = "This action gives an additional -1 attention and triples the dopamine of every action you take this turn"
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

@@ -4,11 +4,13 @@ extends Control
 
 @onready var selectionContainer = $"MarginContainer/PlayerContainer/SelectionContainer"
 @onready var turnText = $"MarginContainer/VBoxContainer/PanelContainer/TurnContainer/TurnText"
+@onready var turnSlider = $"MarginContainer/VBoxContainer/PanelContainer/TurnContainer/HSlider"
 
 func _ready() -> void:
 	for x in range(GlobalData.num_players):
 		var playerInstance = defaultPlayer.instantiate()
 		selectionContainer.add_child(playerInstance)
+	turnSlider.value = GlobalData.num_turns
 
 func _on_back_to_main_pressed() -> void:
 	SceneManager.change_scene_to("res://Scenes/MainMenu.tscn")

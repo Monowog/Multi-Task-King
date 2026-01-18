@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="action_resource" load_steps=2 format=3 uid="uid://cq31tlslwvfum"]
+
+[ext_resource type="Script" uid="uid://dma5jvsrb1mxs" path="res://Scripts/action_resource.gd" id="1_bdd7y"]
+
+[resource]
+script = ExtResource("1_bdd7y")
+cardName = "Eat Fast Food"
+duration = 2
+baseDopamine = 3
+background = Color(1, 0.43137255, 0, 1)
+hasEffect = true
+effectText = "Gives an additional -1 attention after being chosen"
+metadata/_custom_type_script = "uid://dma5jvsrb1mxs"

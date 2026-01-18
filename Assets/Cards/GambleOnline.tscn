@@ -1,0 +1,186 @@
+[gd_scene load_steps=10 format=3 uid="uid://4bae72vvketm"]
+
+[ext_resource type="Script" uid="uid://bxw62y1kl03ch" path="res://Scripts/action_card.gd" id="1_sknh8"]
+[ext_resource type="Resource" uid="uid://qin3kt8jri5k" path="res://Resources/Cards/GambleOnline.tres" id="2_sknh8"]
+[ext_resource type="Texture2D" uid="uid://cltl0gjoa22g2" path="res://Assets/Images/Cards/BaseAct.png" id="3_l7bp6"]
+[ext_resource type="Texture2D" uid="uid://qvadn60vyvbt" path="res://Assets/Images/UI/PNG/Default (128px)/knowledge.png" id="4_o0qte"]
+[ext_resource type="Texture2D" uid="uid://bokdymj4a7rq0" path="res://Assets/Images/UI/PNG/Default (128px)/duration.png" id="5_5pxx0"]
+[ext_resource type="Texture2D" uid="uid://c14mitprcjbr6" path="res://Assets/Images/UI/PNG/Default (128px)/medium.png" id="6_qpsy2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k57vs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x0nsa"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.21960784, 0.2627451, 0.2627451, 0.80784315)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsbsm"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ActionCard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sknh8")
+card_data = ExtResource("2_sknh8")
+
+[node name="Gamble Online" type="Node" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(168, 216)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k57vs")
+
+[node name="BGTexture" type="TextureRect" parent="MarginContainer/Background"]
+layout_mode = 2
+texture = ExtResource("3_l7bp6")
+expand_mode = 1
+
+[node name="CardStats" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameMargin" type="MarginContainer" parent="MarginContainer/CardStats"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+
+[node name="CardNameBG" type="PanelContainer" parent="MarginContainer/CardStats/NameMargin"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x0nsa")
+
+[node name="NameLabel" type="Label" parent="MarginContainer/CardStats/NameMargin/CardNameBG"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Check Notifications"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AdditionalText" type="MarginContainer" parent="MarginContainer/CardStats"]
+custom_minimum_size = Vector2(84, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CardStats/AdditionalText"]
+layout_mode = 2
+texture = ExtResource("4_o0qte")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/CardStats/AdditionalText"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 19
+text = "Effect"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatMargin" type="MarginContainer" parent="MarginContainer/CardStats"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+
+[node name="Duration" type="VBoxContainer" parent="MarginContainer/CardStats/StatMargin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CardStats/StatMargin/Duration"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="DurationTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_5pxx0")
+expand_mode = 1
+
+[node name="Time" type="Label" parent="MarginContainer/CardStats/StatMargin/Duration/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 14
+text = "Time"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/CardStats/StatMargin/Duration"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsbsm")
+
+[node name="DurationText" type="Label" parent="MarginContainer/CardStats/StatMargin/Duration/PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ami" type="VBoxContainer" parent="MarginContainer/CardStats/StatMargin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CardStats/StatMargin/Ami"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+
+[node name="AmiTexture" type="TextureRect" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_qpsy2")
+expand_mode = 1
+
+[node name="Ami" type="Label" parent="MarginContainer/CardStats/StatMargin/Ami/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 14
+text = "Ami"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/CardStats/StatMargin/Ami"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wsbsm")
+
+[node name="AmiText" type="Label" parent="MarginContainer/CardStats/StatMargin/Ami/PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickBox" type="Container" parent="."]
+custom_minimum_size = Vector2(168, 216)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="gui_input" from="ClickBox" to="." method="_on_click_box_gui_input"]
+[connection signal="mouse_entered" from="ClickBox" to="." method="_on_click_box_mouse_entered"]
+[connection signal="mouse_exited" from="ClickBox" to="." method="_on_click_box_mouse_exited"]
