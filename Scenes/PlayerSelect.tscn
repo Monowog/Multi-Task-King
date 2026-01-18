@@ -185,6 +185,7 @@ theme_override_font_sizes/font_size = 16
 text = "Remove Player"
 
 [connection signal="text_changed" from="MarginContainer/StatMargin/Stats/NameInput" to="." method="_on_name_input_text_changed"]
+[connection signal="toggled" from="MarginContainer/StatMargin/Stats/Computer/ComputerOption" to="." method="_on_computer_option_toggled"]
 [connection signal="gui_input" from="MarginContainer/StatMargin/Stats/ColorOptions/ColorOption1" to="." method="_on_color_option_1_gui_input"]
 [connection signal="gui_input" from="MarginContainer/StatMargin/Stats/ColorOptions/ColorOption2" to="." method="_on_color_option_2_gui_input"]
 [connection signal="gui_input" from="MarginContainer/StatMargin/Stats/ColorOptions/ColorOption3" to="." method="_on_color_option_3_gui_input"]

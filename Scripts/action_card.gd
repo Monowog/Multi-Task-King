@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func _on_click_box_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_LEFT && GlobalData.actionsEnabled:
 			baseDopamine = -1
 			duration = -1
 			cardName = ""
@@ -44,7 +44,7 @@ func _on_click_box_mouse_exited() -> void:
 
 func _update_action_stats() -> void:
 	if currDopamine > baseDopamine:
-		amiText.add_theme_color_override("font_color", Color.AQUAMARINE)
+		amiText.add_theme_color_override("font_color", Color.GREEN)
 	else:
 		amiText.add_theme_color_override("font_color", Color.BLACK)
 	amiText.text = str(currDopamine)

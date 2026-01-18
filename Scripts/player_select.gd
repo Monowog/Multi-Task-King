@@ -2,6 +2,8 @@ extends Control
 
 @onready var background = $"MarginContainer/BackgroundPanel"
 
+@onready var computerOption = $"MarginContainer/StatMargin/Stats/Computer/ComputerOption"
+
 @onready var colorOption1 = $"MarginContainer/StatMargin/Stats/ColorOptions/ColorOption1"
 @onready var colorOption2 = $"MarginContainer/StatMargin/Stats/ColorOptions/ColorOption2"
 @onready var colorOption3 = $"MarginContainer/StatMargin/Stats/ColorOptions/ColorOption3"
@@ -16,6 +18,7 @@ func _ready() -> void:
 	$"MarginContainer/StatMargin/Stats/NameInput".text = GlobalData.player_names[self.get_index()]
 	background.add_theme_stylebox_override("panel", new_stylebox)
 	background.get_theme_stylebox("panel").bg_color = GlobalData.player_colors[self.get_index()]
+	computerOption.button_pressed = GlobalData.computer_players[self.get_index()]
 
 func _on_remove_button_pressed() -> void:
 	if GlobalData.num_players > 2:
@@ -56,3 +59,6 @@ func _on_color_option_6_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		GlobalData.player_colors[self.get_index()] = colorOption6.get_theme_stylebox("panel").bg_color
 		background.get_theme_stylebox("panel").bg_color = GlobalData.player_colors[self.get_index()]
+
+func _on_computer_option_toggled(toggled_on: bool) -> void:
+	GlobalData.computer_players[self.get_index()] = computerOption.button_pressed

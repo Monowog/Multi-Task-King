@@ -4,6 +4,7 @@ extends Node
 @export var num_turns = 10
 @export var player_names = ["Player1","Player2","Player3","Player4"]
 @export var player_colors : Array[Color]
+@export var computer_players = [false, false, false, false]
 
 @export var sfx_list : Array[AudioStream]
 
@@ -42,6 +43,9 @@ extends Node
 @onready var sfx_player = $SFXPlayer
 
 var rng = RandomNumberGenerator.new()
+
+var computerActions : Array[String]
+var actionsEnabled = true
 
 var winners : Array[String]
 var winningScores : Array[int]

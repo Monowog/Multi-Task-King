@@ -6,6 +6,7 @@ const PLAYER_SCENE = preload("res://Scenes/Player.tscn")
 @onready var actionOptions = $"PlayspaceMargin/PlayMargin/PlaymatMargin/ActionMargin/MarginContainer/ActionOptions"
 @onready var hand = $"HandMargin/HandSubmargin/HandCards"
 @onready var turnText = $"PlayspaceMargin/Buttons/TurnPanel/Turn"
+@onready var nextButton = $"PlayspaceMargin/PlayerMargin/PlayerController/NextButton"
 
 #turn text box
 @onready var playerTurnPanel = $"PlayspaceMargin/PlayMargin/TurnTextContainer/TurnTextPanel"
@@ -45,6 +46,8 @@ func _ready() -> void:
 	SignalManager.show_tooltip.connect(_show_tooltip)
 	SignalManager.hide_tooltip.connect(_hide_tooltip)
 	
+	GlobalData.actionsEnabled = true
+	
 	for cardName in GlobalData.deck_dict: #for each card type
 		for x in range(GlobalData.deck_dict[cardName]): #add x cards of that type to deck
 			deckList.append(cardName)
@@ -65,6 +68,12 @@ func _ready() -> void:
 	
 	attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[0]
 	update_player_turn_text(GlobalData.player_names[0], GlobalData.player_colors[0])
+	
+	if GlobalData.computer_players[0]:
+		nextButton.visible = false
+		computer_turn()
+		await SignalManager.computer_turn_over
+		nextButton.visible = true
 
 func swap_cards(index1 : int, index2 : int):
 	var temp = deckList[index1]
@@ -87,6 +96,9 @@ func draw_card() -> String:
 	return topCard 
 
 func _on_next_button_pressed() -> void:
+	next_player()
+
+func next_player():
 	if currentDuration > playerAttentions[playerOrder[activePlayer]]: #not enough attention
 		SignalManager.play_action_noise.emit(7)
 	else:
@@ -94,7 +106,7 @@ func _on_next_button_pressed() -> void:
 		attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[0]
 		
 		playerScores[playerOrder[activePlayer]] += get_total_dopamine() #add points to total
-		if cardsTaken == 0 && playerAttentions[playerOrder[activePlayer]] <= 4: #bonus for skipping turn with low attn
+		if cardsTaken == 0 && playerAttentions[playerOrder[activePlayer]] <= 4: #bonus for skipping turn with low attention
 			playerAttentions[playerOrder[activePlayer]] += 3
 		else:
 			playerAttentions[playerOrder[activePlayer]] += 2 - cardsTaken
@@ -107,6 +119,7 @@ func _on_next_button_pressed() -> void:
 		cardsTaken = 0 #Reset player variables
 		currentDuration = 0
 		currentDopamine = 0
+		GlobalData.actionsEnabled = true
 		
 		if activePlayer < GlobalData.num_players - 1: #next player
 			activePlayer += 1 
@@ -131,8 +144,13 @@ func _on_next_button_pressed() -> void:
 			card.queue_free()
 		
 		update_player_turn_text(GlobalData.player_names[playerOrder[activePlayer]], GlobalData.player_colors[playerOrder[activePlayer]])
-		attentionText.text = str(currentDuration) + " / " + str(playerAttentions[playerOrder[activePlayer]])
-
+		update_attention_text()
+		
+		if GlobalData.computer_players[playerOrder[activePlayer]]:
+			nextButton.visible = false
+			computer_turn()
+			await SignalManager.computer_turn_over
+			nextButton.visible = true
 
 func get_first_player() -> int:
 	var first = playerScores.min()
@@ -157,31 +175,37 @@ func _on_how_to_play_pressed() -> void:
 func _on_action_clicked(action: Node, actionName: String, duration: int, dopamine: int):
 	if action.get_parent().name == "ActionOptions": #add to hand
 		cardsTaken += 1
-		currentDuration += duration
 		
-		if currentDuration > playerAttentions[playerOrder[activePlayer]]:
-			attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[1]
-		elif currentDuration == playerAttentions[playerOrder[activePlayer]]:
-			attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[2]
-		attentionText.text = str(currentDuration) + " / " + str(playerAttentions[playerOrder[activePlayer]])
-		
-		var newCard = GlobalData.card_list[actionName].instantiate()
-		hand.add_child(newCard)
+		add_to_hand(actionName)
+		update_attention_text()
 		
 	elif action.get_parent().name == "HandCards": #add to action options
 		cardsTaken -= 1
 		currentDuration -= duration
 		
-		if currentDuration < playerAttentions[playerOrder[activePlayer]]:
-			attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[0]
-		elif currentDuration == playerAttentions[playerOrder[activePlayer]]:
-			attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[2]
-		attentionText.text = str(currentDuration) + " / " + str(playerAttentions[playerOrder[activePlayer]])
-		var newCard = GlobalData.card_list[actionName].instantiate()
-		actionOptions.add_child(newCard)
+		update_attention_text()
+		add_to_options(actionName)
 	
 	update_actions()
 	SignalManager.play_action_noise.emit(cardsTaken)
+
+func add_to_hand(actionName: String):
+	var newCard = GlobalData.card_list[actionName].instantiate()
+	hand.add_child(newCard)
+	currentDuration += newCard.duration
+
+func add_to_options(actionName: String):
+	var newCard = GlobalData.card_list[actionName].instantiate()
+	actionOptions.add_child(newCard)
+
+func update_attention_text():
+	if currentDuration < playerAttentions[playerOrder[activePlayer]]:
+		attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[0]
+	elif currentDuration > playerAttentions[playerOrder[activePlayer]]:
+		attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[1]
+	elif currentDuration == playerAttentions[playerOrder[activePlayer]]:
+		attentionPanel.get_theme_stylebox("panel").bg_color = attentionColors[2]
+	attentionText.text = str(currentDuration) + " / " + str(playerAttentions[playerOrder[activePlayer]])
 
 func _show_tooltip(cardName: String, effect: String, background: Color, isAction: bool, duration: int, baseDopamine: int):
 	tooltipName.text = cardName
@@ -237,3 +261,120 @@ func get_total_dopamine() -> int:
 	for card in hand.get_children():
 		currentDopamine += card.currDopamine
 	return currentDopamine
+
+func computer_turn() -> void:
+	GlobalData.actionsEnabled = false
+	
+	await get_tree().create_timer(0.7).timeout
+	
+	var playstyle : String
+	
+	if GlobalData.num_turns - currTurn < 2:
+		playstyle = "aggressive"
+	elif playerAttentions[playerOrder[activePlayer]] < 5:
+		playstyle = "passTurn"
+	else:
+		var patientChance = 10 + (float(GlobalData.num_turns-currTurn)/GlobalData.num_turns) * 40
+		if GlobalData.rng.randf()*100 < patientChance:
+			playstyle = "patient"
+		else:
+			playstyle = "aggressive"
+	
+	var choices = find_choices(playstyle)
+	
+	for choice in choices:
+		await get_tree().create_timer(0.40).timeout
+		remove_from_options(choice)
+		add_to_hand(choice)
+		cardsTaken += 1
+		SignalManager.play_action_noise.emit(cardsTaken)
+		update_attention_text()
+	
+	update_actions()
+	SignalManager.computer_turn_over.emit()
+
+func find_choices(playstyle: String) -> Array[String]:
+	var choices: Array[String] = []
+	match playstyle:
+		"aggressive":
+			var max = 0
+			for subset in get_all_subsets([0,1,2,3,4,5]):
+				if max < evaluate(subset):
+					max = evaluate(subset)
+					choices.clear()
+					for x in subset:
+						choices.append(actionOptions.get_child(x).cardName)
+				elif max == evaluate(subset) && subset.size() < choices.size():
+					choices.clear()
+					for x in subset:
+						choices.append(actionOptions.get_child(x).cardName)
+		"patient":
+			var maxDuration = 0
+			for card in actionOptions.get_children():
+				if card.duration > maxDuration && card.duration <= playerAttentions[playerOrder[activePlayer]]:
+					maxDuration = card.duration
+					choices.clear()
+					choices.append(card.card_data.cardName)
+		"passTurn":
+			pass
+		_:
+			pass
+		
+	return choices
+
+func evaluate(subset: Array) -> int:
+	var totalDopamine = 0
+	var totalDuration = 0
+	
+	for x in subset: #check if viable subset
+		totalDuration += actionOptions.get_child(x).card_data.duration
+	
+	if totalDuration > playerAttentions[playerOrder[activePlayer]]: #not enough attention
+		return -1
+	
+	for x in subset: #add dopamine and modifiers
+		totalDopamine += actionOptions.get_child(x).card_data.baseDopamine
+		match actionOptions.get_child(x).cardName:
+			"Smoke Up":
+				totalDopamine += subset.size()-1
+			"Read a Comic":
+				if activePlayer == 0:
+					totalDopamine += 2
+			"Daydream":
+				var mod = -1
+				for y in subset:
+					if actionOptions.get_child(y).duration <= 3:
+						mod += 1
+				totalDopamine += mod
+			_:
+				pass
+	
+	for x in subset: #apply multipliers
+		match actionOptions.get_child(x).cardName:
+			"Get a Massage":
+				totalDopamine *= 2
+			_:
+				pass
+				
+	return totalDopamine
+	
+
+func get_all_subsets(items: Array[int]) -> Array[Array]:
+	var all_subsets: Array[Array] = []
+	var n: int = items.size()
+	# Total combinations are 2^n. Iterate through all possible binary numbers
+	# from 0 to 2^n - 1. Each number represents a combination.
+	for i in range(1 << n):
+		var current_subset: Array = []
+		for j in range(n):
+			# Check if the j-th bit is set in the current number 'i'
+			if (i >> j) & 1:
+				current_subset.append(items[j])
+		all_subsets.append(current_subset)
+	return all_subsets
+
+func remove_from_options(actionName: String):
+	for card in actionOptions.get_children():
+		if card.card_data.cardName == actionName:
+			card.queue_free()
+			return

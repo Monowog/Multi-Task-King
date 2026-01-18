@@ -21,6 +21,11 @@ signal update_player(activeIndex: int, newScore: int, newAttention: int)
 signal update_player_slot(activeIndex: int)
 signal update_attention(activeIndex: int, attention: int)
 
+#Computer Signals
+signal disable_actions()
+signal enable_actions()
+signal computer_turn_over()
+
 #Game Signals
 signal draw_card(cardName: String)
 signal card_taken(duration: int, baseDopamine: int)

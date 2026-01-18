@@ -266,7 +266,7 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 40
 
 [node name="PlayerSlots" type="VBoxContainer" parent="PlayspaceMargin"]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(160, 865)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 0
@@ -436,6 +436,7 @@ mouse_filter = 2
 [node name="Spacer" type="MarginContainer" parent="PlayspaceMargin/PlayMargin/TurnTextContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TurnTextPanel" type="PanelContainer" parent="PlayspaceMargin/PlayMargin/TurnTextContainer"]
 custom_minimum_size = Vector2(500, 60)
@@ -599,11 +600,6 @@ script = ExtResource("3_iykop")
 layout_mode = 2
 texture = ExtResource("9_xkknd")
 expand_mode = 1
-
-[node name="TrashCan" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [connection signal="pressed" from="PlayspaceMargin/PlayerMargin/PlayerController/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="PlayspaceMargin/Buttons/BackButton" to="." method="_on_back_button_pressed"]
