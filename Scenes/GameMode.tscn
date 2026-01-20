@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtojdotmm2l52"]
+[gd_scene load_steps=8 format=3 uid="uid://dtojdotmm2l52"]
 
 [ext_resource type="Script" uid="uid://cfna438uphhr6" path="res://Scripts/game_mode.gd" id="1_0wnff"]
 [ext_resource type="PackedScene" uid="uid://bbruuaoq5mbfe" path="res://Scenes/PlayerSelect.tscn" id="2_ftnhc"]
 [ext_resource type="Texture2D" uid="uid://rytpuxxxsl1w" path="res://Assets/Images/Backgrounds/violet_pattern_background.jpg" id="3_d1vur"]
+[ext_resource type="Script" uid="uid://dwdxn4v6oxko0" path="res://Scripts/deck_option.gd" id="4_6w5ds"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1vur"]
 bg_color = Color(0.19434926, 0.19434929, 0.1943492, 0.827451)
@@ -16,6 +17,30 @@ corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6w5ds"]
+bg_color = Color(0.24313726, 0, 0.3019608, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amks8"]
+bg_color = Color(0.037109643, 0.012686831, 0.0009607597, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="GameMode" type="Control"]
 layout_mode = 3
@@ -113,13 +138,70 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Add Player"
 
+[node name="DeckButton" type="Button" parent="MarginContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Change Deck"
+
 [node name="BackToMain" type="Button" parent="MarginContainer/ButtonContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Back to Main
 "
 
+[node name="DeckMargin" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeckOption" type="PanelContainer" parent="DeckMargin"]
+custom_minimum_size = Vector2(800, 800)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_6w5ds")
+script = ExtResource("4_6w5ds")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DeckMargin/DeckOption"]
+layout_mode = 2
+
+[node name="ContentsPanel" type="PanelContainer" parent="DeckMargin/DeckOption/VBoxContainer"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_amks8")
+
+[node name="DeckContentsText" type="Label" parent="DeckMargin/DeckOption/VBoxContainer/ContentsPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Deck Contents"
+
+[node name="ActionScroller" type="ScrollContainer" parent="DeckMargin/DeckOption/VBoxContainer"]
+custom_minimum_size = Vector2(700, 700)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="ActionList" type="VBoxContainer" parent="DeckMargin/DeckOption/VBoxContainer/ActionScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CloseDeckContents" type="Button" parent="DeckMargin/DeckOption/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Close"
+
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/PanelContainer/TurnContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/ButtonContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/ButtonContainer/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ButtonContainer/DeckButton" to="." method="_on_deck_button_pressed"]
 [connection signal="pressed" from="MarginContainer/ButtonContainer/BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="DeckMargin/DeckOption/VBoxContainer/CloseDeckContents" to="." method="_on_close_deck_contents_pressed"]

@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cltl0gjoa22g2" path="res://Assets/Images/Cards/BaseAct.png" id="7_xkknd"]
 [ext_resource type="Texture2D" uid="uid://cbiea1vynx8pd" path="res://Assets/Images/UI/PNG/Default (256px)/duration.png" id="8_0syw4"]
 [ext_resource type="Texture2D" uid="uid://cqifdkwpsb5wt" path="res://Assets/Images/UI/PNG/Default (256px)/medium.png" id="9_b3cqc"]
-[ext_resource type="Texture2D" uid="uid://b8ynu5l6u565b" path="res://Assets/Images/UI/HelpPanel.png" id="11_0syw4"]
+[ext_resource type="Texture2D" uid="uid://cf1n7kel0q1h7" path="res://Assets/Images/UI/HelpPanel.png" id="11_0syw4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loegc"]
 bg_color = Color(0.6, 0.6, 0.6, 0.5568628)

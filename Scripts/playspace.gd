@@ -149,8 +149,8 @@ func next_player():
 			SignalManager.update_player_slot.emit(activePlayer)
 			
 		for card in hand.get_children(): #replace taken actions
-			SignalManager.draw_card.emit(draw_card())
 			discard.append(card.get_child(0).name)
+			SignalManager.draw_card.emit(draw_card())
 			card.queue_free()
 		
 		update_player_turn_text(GlobalData.player_names[playerOrder[activePlayer]], GlobalData.player_colors[playerOrder[activePlayer]])

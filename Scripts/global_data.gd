@@ -56,6 +56,8 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
+var deckSize = 0
+
 var computerActions : Array[String]
 var actionsEnabled = true
 
@@ -69,6 +71,9 @@ func _ready():
 	SignalManager.play_action_noise.connect(_play_action_noise)
 	rng.randomize()
 	music_player.play()
+	
+	for card in deck_dict:
+		deckSize += deck_dict[card]
 	
 func _play_action_noise(index: int):
 	

@@ -5,8 +5,10 @@ extends Control
 @onready var selectionContainer = $"MarginContainer/PlayerContainer/SelectionContainer"
 @onready var turnText = $"MarginContainer/VBoxContainer/PanelContainer/TurnContainer/TurnText"
 @onready var turnSlider = $"MarginContainer/VBoxContainer/PanelContainer/TurnContainer/HSlider"
+@onready var deckMargin = $"DeckMargin"
 
 func _ready() -> void:
+	GlobalData.actionsEnabled = false
 	for x in range(GlobalData.num_players):
 		var playerInstance = defaultPlayer.instantiate()
 		selectionContainer.add_child(playerInstance)
@@ -29,3 +31,9 @@ func _on_add_button_pressed() -> void:
 func _on_h_slider_value_changed(value: float) -> void:
 	GlobalData.num_turns = int(value)
 	turnText.text = "Turns: " + str(GlobalData.num_turns) + " "
+
+func _on_close_deck_contents_pressed() -> void:
+	deckMargin.visible = false
+
+func _on_deck_button_pressed() -> void:
+	deckMargin.visible = true

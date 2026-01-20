@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkv4uksjg2oii"]
+
+[ext_resource type="Script" uid="uid://bl1c2tgo5b3u5" path="res://Scripts/card_option.gd" id="1_hi76c"]
+[ext_resource type="PackedScene" uid="uid://dmkje4eqx2jsq" path="res://Assets/Cards/GetWasted.tscn" id="2_cw2kf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_381ey"]
+bg_color = Color(0, 0, 0, 0.39607844)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="CardOption" type="MarginContainer"]
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+script = ExtResource("1_hi76c")
+action = ExtResource("2_cw2kf")
+
+[node name="BGPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_381ey")
+
+[node name="ActionMargin" type="MarginContainer" parent="BGPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BGPanel/ActionMargin"]
+layout_mode = 2
+
+[node name="ActionMargin" type="MarginContainer" parent="BGPanel/ActionMargin/HBoxContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+
+[node name="Spacer" type="MarginContainer" parent="BGPanel/ActionMargin/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="LessButton" type="Button" parent="BGPanel/ActionMargin/HBoxContainer"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 45
+text = "-"
+
+[node name="NumberText" type="Label" parent="BGPanel/ActionMargin/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoreButton" type="Button" parent="BGPanel/ActionMargin/HBoxContainer"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 45
+text = "+"
+
+[connection signal="pressed" from="BGPanel/ActionMargin/HBoxContainer/LessButton" to="." method="_on_less_button_pressed"]
+[connection signal="pressed" from="BGPanel/ActionMargin/HBoxContainer/MoreButton" to="." method="_on_more_button_pressed"]
